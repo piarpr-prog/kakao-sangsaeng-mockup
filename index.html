@@ -244,6 +244,7 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
   <button class="snav-btn" onclick="showSlide(1)">② Step 1 메시지 작성</button>
   <button class="snav-btn" onclick="showSlide(2)">③ Step 2 발송 설정</button>
   <button class="snav-btn" onclick="showSlide(3)">④ 말풍선 비교</button>
+  <button class="snav-btn" onclick="showSlide(4)">⑤ A안·B안·C안 적용화면</button>
 </div>
 
 <!-- ════════════════════════════════════════
@@ -966,6 +967,326 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
   </div>
 </div>
 </div><!-- /slide3 -->
+
+<!-- ════════════════════════════════════════
+     슬라이드 ⑤ — A안·B안·C안 적용화면
+════════════════════════════════════════ -->
+<div class="slide" id="slide4">
+<div style="background:#F0F0F0;min-height:100vh;padding:40px">
+<div style="max-width:1100px;margin:0 auto">
+
+  <div style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:4px">말풍선 차별화 — A안·B안·C안 적용화면</div>
+  <div style="font-size:13px;color:#888;margin-bottom:6px">상생 캠페인 메시지임을 수신자에게 알리는 방식 3가지 비교. 이미지·내용·버튼은 동일하게 자유 제작.</div>
+  <div style="display:inline-flex;align-items:center;gap:6px;background:#FEE500;border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;color:#1A1A1A;margin-bottom:28px">★ A안 권장</div>
+
+  <!-- 3단 카드 -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start">
+
+    <!-- ── A안 ── -->
+    <div style="background:#fff;border-radius:16px;padding:28px 22px;box-shadow:0 4px 20px rgba(201,168,0,0.18);border:2px solid #FEE500;position:relative">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#FEE500;color:#1A1A1A;font-size:11px;font-weight:800;padding:4px 16px;border-radius:12px;white-space:nowrap">★ 권장</div>
+      <div style="font-size:15px;font-weight:800;color:#1A1A1A;margin-bottom:2px">A안 — 공익문구형</div>
+      <div style="font-size:12px;color:#888;margin-bottom:18px">말풍선 하단에 공익 문구 자동 삽입</div>
+
+      <!-- 폰 -->
+      <div style="display:flex;justify-content:center;margin-bottom:20px">
+        <div class="phone-wrap" style="width:210px;border-color:#C9A800">
+          <div class="phone-bar"></div>
+          <div class="phone-screen">
+            <div class="chat-header">
+              <div class="chat-channel-av" style="width:28px;height:28px;font-size:12px;background:#FEE500;color:#1A1A1A">K</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#1A1A1A">카카오</div>
+                <div style="font-size:10px;color:#888">1577-3754</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="msg-bubble">
+                <div class="msg-ad-tag">(광고)카카오</div>
+                <div class="msg-img" style="height:95px;background:linear-gradient(135deg,#FF6B35,#F7C59F)">
+                  <span style="font-size:22px">🛍️</span>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.95);font-weight:700">동행축제 기획전</span>
+                </div>
+                <div class="msg-text" style="font-size:11px;padding:7px 10px">소상공인 우수상품을 특별가로!<br>최대 30% 할인 · ~5/31</div>
+                <div class="msg-btn-group">
+                  <div class="msg-btn" style="font-size:10px">지금 구매하기</div>
+                  <div class="msg-btn" style="font-size:10px">공유하기</div>
+                </div>
+                <!-- A안: 하단 공익문구 -->
+                <div style="background:#FFFDE0;border-top:1px solid #FFE566;padding:5px 10px;font-size:9px;color:#A07800;font-weight:600;display:flex;align-items:center;gap:4px">
+                  <span>🟡</span>이 메시지는 소상공인 상생을 위해 발송됩니다
+                </div>
+                <div class="msg-bottom-links" style="font-size:9px">
+                  <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 평가표 -->
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#F8F8F8;border-radius:8px;padding:12px 14px">
+          <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:8px">삽입 위치 · 형태</div>
+          <div style="font-size:11px;color:#555;line-height:1.8">
+            위치: 버튼 아래, 수신거부 위<br>
+            형태: 황색 배경 + 🟡 아이콘 + 텍스트<br>
+            문구: <span style="color:#A07800;font-weight:600">"이 메시지는 소상공인 상생을<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;위해 발송됩니다"</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">수신자 거부감 최소 — 자연스러운 공익 이미지</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">콘텐츠 자유도 100% 유지</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">문구 유무로 정산 자동 분류 가능</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">일반 기업 자발적 사용 유인 없어 남용 방지</span>
+          </div>
+        </div>
+        <div style="background:#FFFDE0;border-radius:6px;padding:8px 12px;font-size:11px;color:#A07800;border:1px solid #FFE566;margin-top:4px">
+          <b>개발 난이도:</b> 낮음 — 발송 시 텍스트 블록 자동 append
+        </div>
+      </div>
+    </div>
+
+    <!-- ── B안 ── -->
+    <div style="background:#fff;border-radius:16px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,0.07);border:1px solid #E8E8E8">
+      <div style="font-size:15px;font-weight:800;color:#1A1A1A;margin-bottom:2px">B안 — 배지형</div>
+      <div style="font-size:12px;color:#888;margin-bottom:18px">말풍선 상단에 [정부지원사업] 배지 표시</div>
+
+      <!-- 폰 -->
+      <div style="display:flex;justify-content:center;margin-bottom:20px">
+        <div class="phone-wrap" style="width:210px">
+          <div class="phone-bar"></div>
+          <div class="phone-screen">
+            <div class="chat-header">
+              <div class="chat-channel-av" style="width:28px;height:28px;font-size:12px;background:#FEE500;color:#1A1A1A">K</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#1A1A1A">카카오</div>
+                <div style="font-size:10px;color:#888">1577-3754</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="msg-bubble">
+                <!-- B안: 상단 배지 -->
+                <div style="background:#E8F0FF;padding:4px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #D0DEFF">
+                  <span style="font-size:9px;background:#2855B8;color:#fff;padding:2px 6px;border-radius:4px;font-weight:700">정부지원사업</span>
+                  <span style="font-size:9px;color:#2855B8;font-weight:600">소상공인 상생 홍보</span>
+                </div>
+                <div class="msg-ad-tag">(광고)카카오</div>
+                <div class="msg-img" style="height:95px;background:linear-gradient(135deg,#FF6B35,#F7C59F)">
+                  <span style="font-size:22px">🛍️</span>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.95);font-weight:700">동행축제 기획전</span>
+                </div>
+                <div class="msg-text" style="font-size:11px;padding:7px 10px">소상공인 우수상품을 특별가로!<br>최대 30% 할인 · ~5/31</div>
+                <div class="msg-btn-group">
+                  <div class="msg-btn" style="font-size:10px">지금 구매하기</div>
+                  <div class="msg-btn" style="font-size:10px">공유하기</div>
+                </div>
+                <div class="msg-bottom-links" style="font-size:9px">
+                  <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 평가표 -->
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#F8F8F8;border-radius:8px;padding:12px 14px">
+          <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:8px">삽입 위치 · 형태</div>
+          <div style="font-size:11px;color:#555;line-height:1.8">
+            위치: (광고) 태그 위, 말풍선 최상단<br>
+            형태: 파란 배지 + "정부지원사업" 라벨<br>
+            문구: <span style="color:#2855B8;font-weight:600">[정부지원사업] 소상공인 상생 홍보</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">공식성이 높아 신뢰감 부여</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">남용 차단 명확 — 배지 위조 어려움</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#FF3B30;font-weight:700">⚠</span>
+            <span style="color:#888">광고성 메시지로 인식될 수 있음</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#FF3B30;font-weight:700">⚠</span>
+            <span style="color:#888">말풍선 상단 공간 추가 소요</span>
+          </div>
+        </div>
+        <div style="background:#F0F4FF;border-radius:6px;padding:8px 12px;font-size:11px;color:#2855B8;border:1px solid #C0CFFF;margin-top:4px">
+          <b>개발 난이도:</b> 중간 — 배지 컴포넌트 신규 개발 필요
+        </div>
+      </div>
+    </div>
+
+    <!-- ── C안 ── -->
+    <div style="background:#fff;border-radius:16px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,0.07);border:1px solid #E8E8E8">
+      <div style="font-size:15px;font-weight:800;color:#1A1A1A;margin-bottom:2px">C안 — 발신자 뱃지형</div>
+      <div style="font-size:12px;color:#888;margin-bottom:18px">채널명 옆에 🤝 상생 아이콘 표시</div>
+
+      <!-- 폰 -->
+      <div style="display:flex;justify-content:center;margin-bottom:20px">
+        <div class="phone-wrap" style="width:210px">
+          <div class="phone-bar"></div>
+          <div class="phone-screen">
+            <div class="chat-header">
+              <!-- C안: 채널명 옆 뱃지 -->
+              <div class="chat-channel-av" style="width:28px;height:28px;font-size:12px;background:#FEE500;color:#1A1A1A;position:relative">
+                K
+                <span style="position:absolute;bottom:-2px;right:-3px;font-size:10px;background:#fff;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,0.2)">🤝</span>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#1A1A1A;display:flex;align-items:center;gap:4px">
+                  카카오
+                  <span style="font-size:10px;background:#FFF0E0;color:#E06000;padding:1px 5px;border-radius:4px;font-weight:600">상생</span>
+                </div>
+                <div style="font-size:10px;color:#888">1577-3754</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="msg-bubble">
+                <div class="msg-ad-tag">(광고)카카오</div>
+                <div class="msg-img" style="height:95px;background:linear-gradient(135deg,#FF6B35,#F7C59F)">
+                  <span style="font-size:22px">🛍️</span>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.95);font-weight:700">동행축제 기획전</span>
+                </div>
+                <div class="msg-text" style="font-size:11px;padding:7px 10px">소상공인 우수상품을 특별가로!<br>최대 30% 할인 · ~5/31</div>
+                <div class="msg-btn-group">
+                  <div class="msg-btn" style="font-size:10px">지금 구매하기</div>
+                  <div class="msg-btn" style="font-size:10px">공유하기</div>
+                </div>
+                <div class="msg-bottom-links" style="font-size:9px">
+                  <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 평가표 -->
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#F8F8F8;border-radius:8px;padding:12px 14px">
+          <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:8px">삽입 위치 · 형태</div>
+          <div style="font-size:11px;color:#555;line-height:1.8">
+            위치: 채팅방 헤더 채널명 옆<br>
+            형태: 🤝 아이콘 + "상생" 라벨 뱃지<br>
+            문구: <span style="color:#E06000;font-weight:600">채널 프로필에 상생 아이콘 표시</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">브랜드 이미지 긍정적 — 채널 자체 신뢰도 상승</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">말풍선 본문 영역 침범 없음</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#2E7D32;font-weight:700">✅</span>
+            <span style="color:#333">계정 단위 통제 — 인증 계정에만 노출</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#FF3B30;font-weight:700">⚠</span>
+            <span style="color:#888">수신자가 놓치기 쉬움 — 헤더 주목도 낮음</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px">
+            <span style="color:#FF3B30;font-weight:700">⚠</span>
+            <span style="color:#888">메시지별 구분 불가 — 채널 단위만 표시</span>
+          </div>
+        </div>
+        <div style="background:#FFF5EC;border-radius:6px;padding:8px 12px;font-size:11px;color:#E06000;border:1px solid #FFD0A0;margin-top:4px">
+          <b>개발 난이도:</b> 높음 — 채널 프로필 시스템 연동 필요
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 종합 비교표 -->
+  <div style="background:#fff;border-radius:14px;padding:24px 28px;margin-top:28px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+    <div style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:16px">3안 종합 비교</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <thead>
+          <tr style="background:#F8F8F8">
+            <th style="padding:10px 14px;text-align:left;color:#888;font-weight:600;border-bottom:1px solid #EBEBEB">항목</th>
+            <th style="padding:10px 14px;text-align:center;color:#C9A800;font-weight:700;border-bottom:1px solid #EBEBEB;background:#FFFDE0">A안 공익문구형 ★</th>
+            <th style="padding:10px 14px;text-align:center;color:#2855B8;font-weight:700;border-bottom:1px solid #EBEBEB">B안 배지형</th>
+            <th style="padding:10px 14px;text-align:center;color:#E06000;font-weight:700;border-bottom:1px solid #EBEBEB">C안 발신자뱃지형</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #F5F5F5">
+            <td style="padding:10px 14px;color:#555;font-weight:600">삽입 위치</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5">버튼 아래 (말풍선 하단)</td>
+            <td style="padding:10px 14px;text-align:center">말풍선 최상단</td>
+            <td style="padding:10px 14px;text-align:center">채팅방 헤더 채널명 옆</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F5F5F5">
+            <td style="padding:10px 14px;color:#555;font-weight:600">수신자 거부감</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5"><span style="color:#2E7D32;font-weight:700">낮음</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#E06000">중간</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#2E7D32;font-weight:700">낮음</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #F5F5F5">
+            <td style="padding:10px 14px;color:#555;font-weight:600">남용 방지</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5"><span style="color:#2E7D32;font-weight:700">강함</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#2E7D32;font-weight:700">강함</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#E06000">중간</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #F5F5F5">
+            <td style="padding:10px 14px;color:#555;font-weight:600">콘텐츠 자유도</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5"><span style="color:#2E7D32;font-weight:700">100% 유지</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#2E7D32;font-weight:700">100% 유지</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#2E7D32;font-weight:700">100% 유지</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #F5F5F5">
+            <td style="padding:10px 14px;color:#555;font-weight:600">정산 자동 분류</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5"><span style="color:#2E7D32;font-weight:700">가능</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#2E7D32;font-weight:700">가능</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#E06000">메시지별 불가</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #F5F5F5">
+            <td style="padding:10px 14px;color:#555;font-weight:600">개발 난이도</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5"><span style="color:#2E7D32;font-weight:700">낮음</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#E06000">중간</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="color:#FF3B30">높음</span></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 14px;color:#555;font-weight:600">권장 여부</td>
+            <td style="padding:10px 14px;text-align:center;background:#FFFDF5"><span style="background:#FEE500;color:#1A1A1A;font-weight:800;padding:3px 12px;border-radius:10px">★ 단독 권장</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="background:#E8F0FF;color:#2855B8;font-weight:600;padding:3px 12px;border-radius:10px">보조 활용</span></td>
+            <td style="padding:10px 14px;text-align:center"><span style="background:#FFF5EC;color:#E06000;font-weight:600;padding:3px 12px;border-radius:10px">보조 활용</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:14px;padding:12px 16px;background:#FFFDE0;border-radius:8px;border-left:4px solid #FEE500;font-size:12px;color:#555;line-height:1.7">
+      <b style="color:#A07800">권장 조합:</b> A안(필수) + C안(보조) 동시 적용 — 하단 공익문구로 발송 유형을 명확히 하면서, 채널 헤더 뱃지로 브랜드 신뢰감을 더함. B안은 중기적으로 정부 공인 프로그램 격상 시 추가 검토.
+    </div>
+  </div>
+
+</div>
+</div>
+</div><!-- /slide4 -->
 
 <script>
 function showSlide(n){
