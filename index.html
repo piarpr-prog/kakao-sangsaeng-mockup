@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카카오 비즈니스 파트너센터 — 상생 캠페인 메시지 목업</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F5F5;font-size:14px;color:#1A1A1A}
+
+/* ── 탭 내비게이터 (슬라이드 전환용) ── */
+.slide-nav{background:#2A2A2A;padding:10px 24px;display:flex;gap:8px;align-items:center;position:sticky;top:0;z-index:100}
+.slide-nav span{color:#aaa;font-size:12px;margin-right:4px}
+.snav-btn{background:rgba(255,255,255,0.1);color:#ccc;border:none;border-radius:20px;padding:6px 16px;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s}
+.snav-btn.active{background:#FEE500;color:#1A1A1A;font-weight:700}
+.slide{display:none}.slide.active{display:block}
+
+/* ── 상단 GNB ── */
+.gnb{background:#fff;border-bottom:1px solid #E8E8E8;height:52px;display:flex;align-items:center;padding:0 20px;gap:0;position:sticky;top:42px;z-index:50}
+.gnb-logo{display:flex;align-items:baseline;gap:0;margin-right:24px}
+.gnb-logo .k{font-size:16px;font-weight:900;color:#FEE500;background:#1A1A1A;padding:2px 6px;border-radius:4px;letter-spacing:-0.5px}
+.gnb-logo .b{font-size:15px;font-weight:800;color:#1A1A1A;margin-left:4px}
+.gnb-logo .pc{font-size:13px;color:#888;margin-left:6px;font-weight:400}
+.gnb-nav{display:flex;gap:2px;flex:1}
+.gnav-item{padding:6px 14px;font-size:13px;color:#555;cursor:pointer;border-radius:4px;display:flex;align-items:center;gap:3px}
+.gnav-item:hover{background:#F5F5F5}
+.gnav-item .arr{font-size:9px;color:#aaa}
+.gnb-right{display:flex;align-items:center;gap:12px;margin-left:auto}
+.gnb-right .noti{font-size:12px;color:#555;cursor:pointer;display:flex;align-items:center;gap:3px}
+.noti-badge{background:#FF3B30;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:8px}
+.user-chip{display:flex;align-items:center;gap:6px;background:#F5F5F5;border-radius:20px;padding:4px 12px 4px 4px;cursor:pointer}
+.user-av{width:24px;height:24px;border-radius:50%;background:#FEE500;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.user-name{font-size:12px;color:#333;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ── 레이아웃 ── */
+.layout{display:flex;min-height:calc(100vh - 94px)}
+
+/* ── 사이드바 ── */
+.sidebar{width:56px;background:#fff;border-right:1px solid #E8E8E8;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:4px}
+.sb-icon{width:40px;height:40px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;gap:2px;transition:background 0.15s}
+.sb-icon:hover{background:#F5F5F5}
+.sb-icon.active{background:#FFFDE0}
+.sb-icon svg{width:20px;height:20px;fill:none;stroke:#888;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sb-icon.active svg{stroke:#C9A800}
+.sb-label{font-size:9px;color:#aaa}
+.sb-icon.active .sb-label{color:#C9A800}
+
+/* ── 2차 사이드바 ── */
+.sidebar2{width:160px;background:#fff;border-right:1px solid #E8E8E8;flex-shrink:0}
+.sb2-title{padding:20px 16px 8px;font-size:15px;font-weight:700;color:#1A1A1A}
+.sb2-item{padding:9px 16px;font-size:13px;color:#555;cursor:pointer;transition:background 0.15s;border-radius:0}
+.sb2-item:hover{background:#F9F9F9}
+.sb2-item.active{color:#1A1A1A;font-weight:600;background:#FFFDE0;border-right:3px solid #FEE500}
+.sb2-item.new-item{color:#C9A800;font-weight:600}
+.sb2-badge{background:#FF3B30;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;margin-left:4px}
+.sb2-badge-new{background:#FEE500;color:#1A1A1A;font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;margin-left:4px}
+
+/* ── 메인 ── */
+.main{flex:1;padding:0;overflow-y:auto;min-width:0;display:flex;flex-direction:column}
+
+/* ── 브레드크럼 & 페이지 헤더 ── */
+.page-header{padding:20px 28px 0;border-bottom:1px solid #F0F0F0;background:#fff}
+.breadcrumb{font-size:11px;color:#aaa;margin-bottom:8px}
+.breadcrumb span{color:#888}
+.page-title{font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:16px}
+
+/* ── Step indicator ── */
+.step-bar{background:#fff;padding:14px 28px;border-bottom:1px solid #F0F0F0;display:flex;align-items:center;gap:0}
+.step-item{display:flex;align-items:center;gap:0}
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.step-dot.done{background:#FEE500;color:#1A1A1A}
+.step-dot.active{background:#1A1A1A;color:#fff}
+.step-dot.pending{background:#EBEBEB;color:#aaa}
+.step-text{font-size:12px;color:#aaa;margin-left:6px;margin-right:6px}
+.step-text.active{color:#1A1A1A;font-weight:600}
+.step-line{width:40px;height:1px;background:#E0E0E0;margin:0 4px}
+.step-line.done{background:#FEE500}
+
+/* ── 콘텐츠 영역 ── */
+.content-wrap{display:flex;flex:1;padding:24px 28px;gap:24px;min-height:0}
+.form-area{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
+.preview-area{width:280px;flex-shrink:0;position:sticky;top:0;align-self:flex-start}
+
+/* ── 폼 카드 ── */
+.form-card{background:#fff;border-radius:10px;padding:22px 24px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.form-section-title{font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.required{color:#FF3B30;font-size:12px}
+.form-row{margin-bottom:14px}
+.form-label{font-size:12px;color:#555;margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.form-hint{font-size:11px;color:#aaa;margin-top:4px;line-height:1.5}
+.radio-group{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.radio-option{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:#333}
+.radio-option input[type=radio]{accent-color:#FEE500;width:16px;height:16px}
+.radio-option.new-option{background:#FFFDE0;border:1px solid #FFE566;border-radius:8px;padding:8px 14px;gap:8px}
+.radio-option.new-option.selected{border-color:#C9A800;background:#FFF9D0}
+.cert-badge{display:inline-flex;align-items:center;gap:4px;background:#E6F4EA;border:1px solid #81C784;border-radius:12px;padding:2px 10px;font-size:11px;color:#2E7D32;font-weight:600}
+
+/* ── 상생 인포박스 ── */
+.sangsaeng-box{background:#FFFDE0;border:1px solid #FFE566;border-radius:8px;padding:14px 16px;margin-top:12px}
+.ss-box-title{font-size:13px;font-weight:700;color:#A07800;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.ss-box-body{font-size:12px;color:#555;line-height:1.7}
+.ss-box-body b{color:#1A1A1A}
+.ss-discount-row{display:flex;align-items:center;gap:8px;margin-top:10px;background:#fff;border-radius:6px;padding:10px 14px}
+.ss-price-orig{font-size:12px;color:#aaa;text-decoration:line-through}
+.ss-price-arrow{color:#aaa;font-size:12px}
+.ss-price-new{font-size:15px;font-weight:800;color:#C9A800}
+.ss-discount-label{background:#FF6B35;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:auto}
+
+/* ── 공익문구 자동삽입 섹션 ── */
+.auto-insert-section{background:#F8F8F8;border-radius:8px;padding:14px 16px;margin-top:12px;border:1px solid #E8E8E8}
+.ai-label{font-size:11px;font-weight:700;color:#888;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.ai-label::before{content:'';display:inline-block;width:8px;height:8px;background:#C9A800;border-radius:50%}
+.ai-text-preview{background:#fff;border:1px dashed #C9A800;border-radius:6px;padding:10px 14px;font-size:12px;color:#555;line-height:1.6}
+.ai-text-preview .fixed-text{color:#A07800;font-weight:600}
+.ai-hint{font-size:11px;color:#aaa;margin-top:6px;line-height:1.5}
+
+/* ── 이미지 꾸미기 섹션 ── */
+.img-tabs{display:flex;gap:0;border:1px solid #E0E0E0;border-radius:6px;overflow:hidden;margin-bottom:12px;width:fit-content}
+.img-tab{padding:7px 16px;font-size:12px;color:#888;cursor:pointer;background:#fff;border:none;font-family:inherit}
+.img-tab.active{background:#1A1A1A;color:#fff;font-weight:600}
+.img-upload-area{border:1px dashed #D0D0D0;border-radius:8px;background:#FAFAFA;display:flex;align-items:center;justify-content:space-between;padding:10px 14px}
+.img-upload-name{font-size:12px;color:#555}
+.btn-sm{padding:6px 14px;border-radius:5px;font-size:12px;cursor:pointer;border:1px solid #E0E0E0;background:#fff;color:#555;font-family:inherit}
+
+/* ── 내용 ── */
+.content-area{border:1px solid #E0E0E0;border-radius:6px;padding:12px;font-size:13px;color:#333;width:100%;min-height:70px;line-height:1.6;resize:vertical}
+.char-count{text-align:right;font-size:11px;color:#aaa;margin-top:4px}
+.link-row{display:flex;gap:8px;margin-bottom:8px}
+.link-input{flex:1;border:1px solid #E0E0E0;border-radius:5px;padding:8px 12px;font-size:12px;color:#333;font-family:inherit}
+.btn-check{padding:7px 12px;border-radius:5px;font-size:12px;cursor:pointer;border:1px solid #E0E0E0;background:#fff;color:#555;font-family:inherit;white-space:nowrap}
+
+/* ── 버튼 유형 선택 ── */
+.btn-type-group{display:flex;gap:0;border:1px solid #E0E0E0;border-radius:6px;overflow:hidden;width:fit-content}
+.btype{padding:7px 14px;font-size:12px;color:#888;cursor:pointer;background:#fff;border:none;border-right:1px solid #E0E0E0;font-family:inherit}
+.btype:last-child{border-right:none}
+.btype.active{background:#1A1A1A;color:#fff}
+.btn-name-input{border:1px solid #E0E0E0;border-radius:5px;padding:8px 12px;font-size:12px;color:#333;font-family:inherit;width:100%}
+
+/* ── 하단 네비 ── */
+.form-footer{background:#fff;border-top:1px solid #F0F0F0;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0}
+.btn-prev{padding:10px 20px;border:1px solid #E0E0E0;border-radius:6px;background:#fff;font-size:13px;cursor:pointer;color:#555;font-family:inherit}
+.btn-save{padding:10px 20px;border:1px solid #E0E0E0;border-radius:6px;background:#fff;font-size:13px;cursor:pointer;color:#555;font-family:inherit}
+.btn-next{padding:10px 28px;border:none;border-radius:6px;background:#FEE500;font-size:13px;font-weight:700;cursor:pointer;color:#1A1A1A;font-family:inherit}
+
+/* ── 폰 프리뷰 ── */
+.phone-wrap{background:#E5E5EA;border-radius:40px;padding:14px 12px 20px;box-shadow:0 8px 32px rgba(0,0,0,0.18);border:1px solid #C8C8CA}
+.phone-bar{background:#1A1A1A;height:6px;width:60px;border-radius:3px;margin:0 auto 14px;opacity:0.2}
+.phone-screen{background:#F2F2F7;border-radius:26px;overflow:hidden;min-height:480px}
+.chat-header{background:#fff;padding:12px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #F0F0F0}
+.chat-channel-av{width:32px;height:32px;border-radius:50%;background:#FEE500;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#1A1A1A;flex-shrink:0}
+.chat-channel-info{}
+.chat-channel-name{font-size:13px;font-weight:700;color:#1A1A1A}
+.chat-channel-sub{font-size:11px;color:#888}
+.chat-body{padding:12px 10px;display:flex;flex-direction:column;gap:4px}
+.msg-bubble{background:#fff;border-radius:14px 14px 14px 2px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);max-width:220px}
+.msg-ad-tag{font-size:10px;color:#888;padding:6px 10px 2px;font-weight:500}
+.msg-channel-name{font-size:12px;font-weight:700;color:#1A1A1A;padding:0 10px 6px}
+.msg-img{width:100%;height:120px;background:linear-gradient(135deg,#FF6B35,#F7C59F);display:flex;align-items:center;justify-content:center;font-size:22px;flex-direction:column;gap:4px}
+.msg-img-label{font-size:10px;color:rgba(255,255,255,0.8);font-weight:600;letter-spacing:0.5px}
+.msg-text{font-size:12px;color:#333;padding:8px 10px;line-height:1.55}
+.msg-btn-group{border-top:1px solid #F0F0F0;display:flex}
+.msg-btn{flex:1;padding:8px 4px;font-size:11px;color:#555;text-align:center;border-right:1px solid #F0F0F0;cursor:pointer}
+.msg-btn:last-child{border-right:none}
+.msg-bottom-links{font-size:10px;color:#aaa;padding:5px 10px 7px;display:flex;gap:6px}
+.msg-bottom-links span{cursor:pointer}
+.msg-bottom-links span:hover{text-decoration:underline}
+/* 상생 문구 자동삽입 영역 */
+.ss-auto-text{background:#FFFDE0;border-top:1px solid #FFE566;padding:5px 10px;font-size:10px;color:#A07800;font-weight:600;line-height:1.4;display:flex;align-items:center;gap:4px}
+.ss-auto-text .ss-icon{font-size:11px}
+
+/* ── 비교 슬라이드 ── */
+.compare-wrap{padding:32px 40px;background:#F0F0F0;min-height:100vh}
+.compare-title{font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:6px}
+.compare-sub{font-size:13px;color:#888;margin-bottom:28px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:760px}
+.compare-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.07)}
+.cc-label{font-size:12px;font-weight:700;color:#aaa;margin-bottom:14px;letter-spacing:0.5px;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.cc-label.new-label{color:#C9A800}
+.cc-phone{display:flex;justify-content:center}
+.diff-highlight{position:relative}
+.diff-arrow{text-align:center;font-size:24px;color:#aaa;padding-top:40px}
+
+/* ── Step 2 발송 설정 ── */
+.step2-grid{display:flex;gap:24px;padding:24px 28px}
+.step2-form{flex:1;display:flex;flex-direction:column;gap:16px}
+.step2-preview{width:280px;flex-shrink:0}
+.form-card-title{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #F5F5F5}
+.radio-row{display:flex;flex-direction:column;gap:8px}
+.radio-opt{display:flex;align-items:flex-start;gap:8px;padding:8px;border-radius:6px;cursor:pointer}
+.radio-opt:hover{background:#F9F9F9}
+.radio-opt input{accent-color:#FEE500;width:16px;height:16px;margin-top:1px;flex-shrink:0}
+.radio-opt-label{font-size:13px;color:#333;font-weight:500}
+.radio-opt-sub{font-size:11px;color:#888;margin-top:2px}
+.radio-opt.active-opt{background:#FFFDE0}
+.target-box{background:#F8F8F8;border-radius:8px;padding:14px 16px;margin-top:4px}
+.target-row{display:flex;align-items:center;gap:0;font-size:13px;color:#333;margin-bottom:8px}
+.target-key{color:#888;width:80px;flex-shrink:0;font-size:12px}
+.target-val{color:#1A1A1A;font-weight:600}
+.target-val.highlight{color:#3B82F6;text-decoration:underline;cursor:pointer}
+.cost-box{background:#F8F8F8;border-radius:8px;padding:14px 16px}
+.cost-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-size:13px}
+.cost-label{color:#888}
+.cost-val{color:#1A1A1A;font-weight:600}
+.cost-val.free{color:#3B82F6;font-size:16px;font-weight:800}
+.cost-hint{font-size:11px;color:#aaa;margin-top:8px;line-height:1.5}
+.ss-cost-note{background:#FFFDE0;border:1px solid #FFE566;border-radius:6px;padding:8px 12px;font-size:11px;color:#A07800;margin-top:8px;display:flex;align-items:center;gap:6px}
+.date-row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.date-input{border:1px solid #E0E0E0;border-radius:5px;padding:8px 12px;font-size:12px;color:#333;font-family:inherit;background:#fff}
+.date-select{border:1px solid #E0E0E0;border-radius:5px;padding:8px;font-size:12px;color:#333;font-family:inherit;background:#fff}
+.footer-btns{display:flex;gap:8px}
+.btn-register{padding:10px 32px;border:none;border-radius:6px;background:#FEE500;font-size:14px;font-weight:700;cursor:pointer;color:#1A1A1A;font-family:inherit}
+.btn-test{padding:10px 18px;border:1px solid #E0E0E0;border-radius:6px;background:#fff;font-size:13px;cursor:pointer;color:#555;font-family:inherit}
+
+/* ── 권한 신청 슬라이드 ── */
+.auth-wrap{padding:28px}
+.auth-header{background:#fff;border-radius:10px;padding:22px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.auth-header-title{font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.auth-header-sub{font-size:12px;color:#888;line-height:1.6}
+.auth-status{display:flex;align-items:center;gap:8px;margin-top:12px;background:#E6F4EA;border-radius:8px;padding:10px 14px}
+.auth-status-icon{font-size:18px}
+.auth-status-text{font-size:13px;color:#2E7D32;font-weight:600}
+.auth-status-detail{font-size:12px;color:#555;margin-left:auto}
+.auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.auth-card{background:#fff;border-radius:10px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.auth-card-title{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #F5F5F5;display:flex;align-items:center;gap:6px}
+.info-row{display:flex;align-items:flex-start;gap:0;margin-bottom:10px}
+.info-key{width:90px;flex-shrink:0;font-size:12px;color:#888}
+.info-val{font-size:12px;color:#333;font-weight:500}
+.info-val.green{color:#2E7D32;font-weight:700}
+.info-val.gray{color:#aaa}
+.progress-bar-wrap{background:#F0F0F0;border-radius:4px;height:6px;margin-top:4px;overflow:hidden}
+.progress-bar{background:#FEE500;height:100%;border-radius:4px;width:72%}
+.usage-note{font-size:11px;color:#aaa;margin-top:6px;line-height:1.5}
+.btn-apply{padding:9px 20px;border:none;border-radius:6px;background:#FEE500;font-size:13px;font-weight:700;cursor:pointer;color:#1A1A1A;font-family:inherit;margin-top:12px}
+.btn-renew{padding:7px 14px;border:1px solid #E0E0E0;border-radius:5px;background:#fff;font-size:12px;cursor:pointer;color:#555;font-family:inherit}
+</style>
+</head>
+<body>
+
+<!-- ── 슬라이드 탭 ── -->
+<div class="slide-nav">
+  <span>슬라이드 전환</span>
+  <button class="snav-btn active" onclick="showSlide(0)">① 권한 신청 화면</button>
+  <button class="snav-btn" onclick="showSlide(1)">② Step 1 메시지 작성</button>
+  <button class="snav-btn" onclick="showSlide(2)">③ Step 2 발송 설정</button>
+  <button class="snav-btn" onclick="showSlide(3)">④ 말풍선 비교</button>
+</div>
+
+<!-- ════════════════════════════════════════
+     슬라이드 ① — 상생 캠페인 권한 신청 화면
+════════════════════════════════════════ -->
+<div class="slide active" id="slide0">
+<div class="gnb">
+  <div class="gnb-logo"><span class="k">kakao</span><span class="b">business</span><span class="pc">파트너센터</span></div>
+  <div class="gnb-nav">
+    <div class="gnav-item">파트너</div>
+    <div class="gnav-item">광고 <span class="arr">▾</span></div>
+    <div class="gnav-item">판매 <span class="arr">▾</span></div>
+    <div class="gnav-item">비즈도구 <span class="arr">▾</span></div>
+    <div class="gnav-item">지원 <span class="arr">▾</span></div>
+  </div>
+  <div class="gnb-right">
+    <div class="noti">알림 <span class="noti-badge">N</span></div>
+    <div class="noti">공지사항 <span class="noti-badge">N</span></div>
+    <div class="noti">고객센터</div>
+    <div class="user-chip"><div class="user-av">S</div><span class="user-name">skstoa_mktg@kakao...</span></div>
+  </div>
+</div>
+<div class="layout">
+  <!-- 아이콘 사이드바 -->
+  <div class="sidebar">
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="sb-label">홈</span></div>
+    <div class="sb-icon active"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="sb-label">메시지</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span class="sb-label">채널</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span class="sb-label">친구</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="sb-label">통계</span></div>
+  </div>
+  <!-- 2차 사이드바 -->
+  <div class="sidebar2">
+    <div class="sb2-title">메시지</div>
+    <div class="sb2-item">메시지 보내기</div>
+    <div class="sb2-item">내 메시지</div>
+    <div class="sb2-item">메시지 활용예시</div>
+    <div class="sb2-item">웰컴메시지</div>
+    <div class="sb2-item active new-item">🟡 상생 캠페인 <span class="sb2-badge-new">NEW</span></div>
+    <div class="sb2-item">친구 그룹</div>
+    <div class="sb2-item">고객 파일</div>
+  </div>
+  <!-- 메인 -->
+  <div class="main">
+    <div class="page-header">
+      <div class="breadcrumb">메시지 <span>›</span> 상생 캠페인</div>
+      <div class="page-title">🟡 상생 캠페인 권한 관리</div>
+    </div>
+    <div class="auth-wrap">
+      <!-- 현재 인증 상태 -->
+      <div class="auth-header">
+        <div class="auth-header-title">
+          인증 현황
+          <span class="cert-badge">✓ 인증 완료</span>
+        </div>
+        <div class="auth-header-sub">비즈니스 인증 채널에 상생 캠페인 발송 권한이 등록되어 있습니다.<br>사업 기간 내에 메시지 보내기 화면에서 <b>상생 캠페인 메시지</b> 유형을 선택할 수 있습니다.</div>
+        <div class="auth-status">
+          <span class="auth-status-icon">✅</span>
+          <span class="auth-status-text">2026 동행축제 (5월) 수행기관 인증</span>
+          <span class="auth-status-detail">유효기간 2026.05.01 ~ 2026.05.31 &nbsp;|&nbsp; <button class="btn-renew">갱신 신청</button></span>
+        </div>
+      </div>
+
+      <div class="auth-grid">
+        <!-- 인증 정보 -->
+        <div class="auth-card">
+          <div class="auth-card-title">📋 등록된 인증 정보</div>
+          <div class="info-row"><span class="info-key">수행 사업명</span><span class="info-val">2026 동행축제 (5월)</span></div>
+          <div class="info-row"><span class="info-key">인증 방법</span><span class="info-val">협약서 업로드 (옵션 A)</span></div>
+          <div class="info-row"><span class="info-key">검토 완료</span><span class="info-val">2026.04.28</span></div>
+          <div class="info-row"><span class="info-key">사업 기간</span><span class="info-val green">2026.05.01 ~ 2026.05.31</span></div>
+          <div class="info-row"><span class="info-key">발송 단가</span><span class="info-val">적용 단가 기준 <b>10% 자동 할인</b></span></div>
+          <div class="info-row"><span class="info-key">기간 만료 후</span><span class="info-val gray">일반 단가 자동 전환</span></div>
+        </div>
+
+        <!-- 발송 사용 현황 -->
+        <div class="auth-card">
+          <div class="auth-card-title">📊 상생 메시지 발송 현황 (5월)</div>
+          <div class="info-row"><span class="info-key">총 발송 횟수</span><span class="info-val">2회 / 최대 3회</span></div>
+          <div class="progress-bar-wrap"><div class="progress-bar"></div></div>
+          <div class="usage-note">남은 발송 횟수: <b>1회</b> &nbsp;|&nbsp; 캠페인 기간 내 최대 3회까지 상생 유형으로 발송 가능합니다.</div>
+          <div style="height:12px"></div>
+          <div class="info-row"><span class="info-key">총 발송 건수</span><span class="info-val">7,258,400건</span></div>
+          <div class="info-row"><span class="info-key">절감 금액</span><span class="info-val green">약 108만원 절감</span></div>
+          <div class="info-row"><span class="info-key">참여 소상공인</span><span class="info-val">82개 판매사</span></div>
+          <div class="info-row"><span class="info-key">실적 보고 상태</span><span class="info-val gray">미제출 (사업 종료 후 10영업일 내 제출)</span></div>
+          <button class="btn-apply" style="background:#F5F5F5;color:#555;border:1px solid #E0E0E0;font-weight:400;font-size:12px;margin-top:4px">실적 보고서 제출하기</button>
+        </div>
+
+        <!-- 새 사업 신청 -->
+        <div class="auth-card" style="border:2px dashed #E0E0E0;background:#FAFAFA">
+          <div class="auth-card-title" style="color:#aaa">➕ 새 사업 권한 신청</div>
+          <div style="font-size:12px;color:#aaa;line-height:1.7;margin-bottom:16px">새로운 정부지원사업을 수주한 경우,<br>협약서 또는 판판대로 코드로 권한을 추가 신청합니다.</div>
+          <button class="btn-apply">새 사업 권한 신청하기</button>
+        </div>
+
+        <!-- 안내 -->
+        <div class="auth-card" style="background:#F8F8F8">
+          <div class="auth-card-title">❓ 인증 방법 안내</div>
+          <div style="font-size:12px;color:#555;line-height:1.7">
+            <b>옵션 A — 협약서 업로드</b><br>
+            중기부/KODMA 수행기관 협약서 PDF<br>
+            검토 소요: 영업일 2~3일<br><br>
+            <b>옵션 B — 판판대로 코드 입력</b><br>
+            판판대로 수주 사업 공고 코드 입력<br>
+            검토 소요: 영업일 1~2일<br><br>
+            <span style="color:#aaa">※ 기간 만료 후 미갱신 시 일반 단가 자동 적용</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /slide0 -->
+
+
+<!-- ════════════════════════════════════════
+     슬라이드 ② — Step 1 메시지 작성
+════════════════════════════════════════ -->
+<div class="slide" id="slide1">
+<div class="gnb">
+  <div class="gnb-logo"><span class="k">kakao</span><span class="b">business</span><span class="pc">파트너센터</span></div>
+  <div class="gnb-nav">
+    <div class="gnav-item">파트너</div>
+    <div class="gnav-item">광고 <span class="arr">▾</span></div>
+    <div class="gnav-item">판매 <span class="arr">▾</span></div>
+    <div class="gnav-item">비즈도구 <span class="arr">▾</span></div>
+    <div class="gnav-item">지원 <span class="arr">▾</span></div>
+  </div>
+  <div class="gnb-right">
+    <div class="noti">알림 <span class="noti-badge">N</span></div>
+    <div class="noti">공지사항 <span class="noti-badge">N</span></div>
+    <div class="noti">고객센터</div>
+    <div class="user-chip"><div class="user-av">S</div><span class="user-name">skstoa_mktg@kakao...</span></div>
+  </div>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="sb-label">홈</span></div>
+    <div class="sb-icon active"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="sb-label">메시지</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span class="sb-label">채널</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span class="sb-label">친구</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="sb-label">통계</span></div>
+  </div>
+  <div class="sidebar2">
+    <div class="sb2-title">메시지</div>
+    <div class="sb2-item active">메시지 보내기</div>
+    <div class="sb2-item">내 메시지</div>
+    <div class="sb2-item">메시지 활용예시</div>
+    <div class="sb2-item">웰컴메시지</div>
+    <div class="sb2-item new-item">🟡 상생 캠페인 <span class="sb2-badge-new">NEW</span></div>
+    <div class="sb2-item">친구 그룹</div>
+    <div class="sb2-item">고객 파일</div>
+  </div>
+  <div class="main">
+    <!-- Step bar -->
+    <div class="step-bar">
+      <div class="step-item">
+        <div class="step-dot active">1</div>
+        <span class="step-text active">와이드 이미지형 작성</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item">
+        <div class="step-dot pending">2</div>
+        <span class="step-text">메시지 발송 설정</span>
+      </div>
+    </div>
+    <!-- 콘텐츠 -->
+    <div class="content-wrap">
+      <!-- 폼 영역 -->
+      <div class="form-area">
+
+        <!-- 메시지 종류 -->
+        <div class="form-card">
+          <div class="form-section-title">메시지 종류</div>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="msgtype" checked> 광고성</label>
+            <label class="radio-option"><input type="radio" name="msgtype"> 정보성</label>
+          </div>
+          <div class="form-hint">광고성 내용이 포함된 경우에 체크해주세요. ⓘ</div>
+        </div>
+
+        <!-- 🟡 발송 유형 (NEW) -->
+        <div class="form-card" style="border:2px solid #FFE566;background:#FFFDF8">
+          <div class="form-section-title">발송 유형 <span class="required">*</span> &nbsp;<span style="font-size:11px;font-weight:400;color:#aaa">인증 계정에 한해 상생 캠페인 유형이 활성화됩니다</span></div>
+          <div class="radio-group" style="gap:12px;flex-direction:column;align-items:flex-start">
+            <label class="radio-option"><input type="radio" name="sendtype" id="normal" onclick="setType('normal')"> 일반 채널 메시지 <span style="font-size:11px;color:#aaa">(기본)</span></label>
+            <label class="radio-option new-option selected" style="width:100%">
+              <input type="radio" name="sendtype" id="sangsaeng" checked onclick="setType('sangsaeng')">
+              <span>🟡 상생 캠페인 메시지</span>
+              <span class="cert-badge" style="margin-left:8px">✓ 2026 동행축제 인증 완료</span>
+            </label>
+          </div>
+
+          <!-- 상생 인포 박스 -->
+          <div class="sangsaeng-box">
+            <div class="ss-box-title">🟡 상생 캠페인 메시지 발송 조건</div>
+            <div class="ss-box-body">
+              · 발송 유효기간: <b>2026.05.01 ~ 2026.05.31</b><br>
+              · 이번 달 잔여 발송 횟수: <b>1회</b> (총 3회 중 2회 사용)<br>
+              · 캠페인 브리프: 참여 소상공인 정보를 아래에 입력해 주세요.
+            </div>
+            <div class="ss-discount-row">
+              <span style="font-size:12px;color:#888">총 발송 단가</span>
+              <span class="ss-price-orig">15원/건</span>
+              <span class="ss-price-arrow">→</span>
+              <span class="ss-price-new">13.5원/건</span>
+              <span class="ss-discount-label">10% 할인 자동적용</span>
+            </div>
+            <!-- 캠페인 브리프 입력 -->
+            <div style="margin-top:12px;background:#fff;border-radius:6px;padding:12px 14px;border:1px solid #FFE566">
+              <div style="font-size:11px;font-weight:700;color:#A07800;margin-bottom:8px">📋 캠페인 브리프 <span class="required">*</span></div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="font-size:11px;color:#888;width:110px;flex-shrink:0">참여 소상공인 수</span>
+                  <input type="text" value="82개 판매사" style="flex:1;border:1px solid #E0E0E0;border-radius:4px;padding:5px 10px;font-size:12px;font-family:inherit">
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="font-size:11px;color:#888;width:110px;flex-shrink:0">소상공인 카테고리</span>
+                  <input type="text" value="식품, 생활용품, 수공예품" style="flex:1;border:1px solid #E0E0E0;border-radius:4px;padding:5px 10px;font-size:12px;font-family:inherit">
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="font-size:11px;color:#888;width:110px;flex-shrink:0">메시지 주제</span>
+                  <input type="text" value="2026 동행축제 소상공인 기획전" style="flex:1;border:1px solid #E0E0E0;border-radius:4px;padding:5px 10px;font-size:12px;font-family:inherit">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 공익문구 자동삽입 -->
+          <div class="auto-insert-section">
+            <div class="ai-label">공익 문구 자동 삽입 (시스템 고정 — 수정 불가)</div>
+            <div class="ai-text-preview">
+              이미지 · 내용 · 버튼은 자유롭게 작성하세요.<br>
+              말풍선 하단에 아래 문구가 <span class="fixed-text">자동으로 삽입</span>됩니다:<br><br>
+              <span style="background:#FFFDE0;border-left:3px solid #C9A800;padding:4px 10px;display:block;border-radius:0 4px 4px 0;font-weight:600;color:#A07800">
+                이 메시지는 소상공인 상생을 위해 발송됩니다
+              </span>
+            </div>
+            <div class="ai-hint">※ 해당 문구는 시스템에서 자동 삽입되며, 발송사가 임의로 수정하거나 삭제할 수 없습니다.</div>
+          </div>
+        </div>
+
+        <!-- 고객센터 연락처 -->
+        <div class="form-card">
+          <div class="form-section-title">고객센터 연락처 <span class="required">*</span></div>
+          <div class="link-row">
+            <input class="link-input" type="text" value="1566-0106">
+            <button class="btn-check">설정</button>
+          </div>
+          <div class="form-hint">메시지 전송 시 필수로 입력해야 하는 정보입니다.</div>
+        </div>
+
+        <!-- 메시지 꾸미기 -->
+        <div class="form-card">
+          <div class="form-section-title">메시지 꾸미기 <span class="required">*</span></div>
+          <div class="img-tabs">
+            <button class="img-tab">기본 이미지</button>
+            <button class="img-tab active">이미지 업로드</button>
+            <button class="img-tab">동영상</button>
+          </div>
+          <div class="img-upload-area">
+            <span class="img-upload-name">소상공인_기획전_배너.jpg</span>
+            <button class="btn-sm">삭제</button>
+          </div>
+          <div style="margin-top:10px">
+            <div class="radio-group" style="font-size:12px">
+              <span style="font-size:12px;color:#555;font-weight:600">첨부할 링크</span>
+              <label class="radio-option" style="font-size:12px"><input type="radio" name="linktype"> 소식 첨부</label>
+              <label class="radio-option" style="font-size:12px"><input type="radio" name="linktype"> 쿠폰 첨부</label>
+              <label class="radio-option" style="font-size:12px"><input type="radio" name="linktype" checked> 링크</label>
+            </div>
+            <div class="link-row" style="margin-top:8px">
+              <input class="link-input" type="text" value="https://www.skstoa.com/sangsaeng2026">
+              <button class="btn-check">연결확인</button>
+            </div>
+          </div>
+          <div class="form-hint">권장사이즈 : 800 x 600px / 지원파일 : jpg,png (최대 10MB)</div>
+        </div>
+
+        <!-- 내용 -->
+        <div class="form-card">
+          <div class="form-section-title">내용</div>
+          <div class="radio-group" style="margin-bottom:10px">
+            <label class="radio-option"><input type="radio" name="content"> 없음</label>
+            <label class="radio-option"><input type="radio" name="content" checked> 있음</label>
+          </div>
+          <textarea class="content-area">소상공인 우수상품을 특별가로!
+오늘~5/31까지 최대 30% 할인
+지금 동행축제 기획전에서 만나보세요.</textarea>
+          <div class="char-count">42/76자</div>
+        </div>
+
+        <!-- 메시지 버튼 -->
+        <div class="form-card">
+          <div class="form-section-title">메시지 버튼</div>
+          <div class="btn-type-group" style="margin-bottom:12px">
+            <button class="btype">없음</button>
+            <button class="btype">소식</button>
+            <button class="btype">쿠폰</button>
+            <button class="btype active">링크</button>
+            <button class="btype">비즈니스품 ⓘ</button>
+          </div>
+          <input class="btn-name-input" type="text" value="지금 바로 구매하기" style="margin-bottom:8px">
+          <div class="link-row">
+            <input class="link-input" type="text" value="https://www.skstoa.com/sangsaeng2026">
+            <button class="btn-check">연결확인</button>
+          </div>
+        </div>
+
+      </div><!-- /form-area -->
+
+      <!-- 프리뷰 -->
+      <div class="preview-area">
+        <div style="font-size:11px;color:#aaa;margin-bottom:8px;font-weight:600;text-align:center">미리보기</div>
+        <div class="phone-wrap">
+          <div class="phone-bar"></div>
+          <div class="phone-screen">
+            <div class="chat-header">
+              <div class="chat-channel-av">SK</div>
+              <div class="chat-channel-info">
+                <div class="chat-channel-name">SK스토아</div>
+                <div class="chat-channel-sub">1566-0106</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="msg-bubble">
+                <div class="msg-ad-tag">(광고)SK스토아</div>
+                <!-- 이미지 영역 -->
+                <div class="msg-img">
+                  <span style="font-size:28px">🛍️</span>
+                  <span style="font-size:10px;color:rgba(255,255,255,0.9);font-weight:700">2026 동행축제</span>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.7)">소상공인 기획전</span>
+                </div>
+                <!-- 텍스트 -->
+                <div class="msg-text">소상공인 우수상품을 특별가로!<br>오늘~5/31까지 최대 30% 할인<br>지금 동행축제 기획전에서<br>만나보세요.</div>
+                <!-- 버튼 -->
+                <div class="msg-btn-group">
+                  <div class="msg-btn">지금 바로 구매하기</div>
+                  <div class="msg-btn">공유하기</div>
+                </div>
+                <!-- 🟡 자동 삽입 공익문구 -->
+                <div class="ss-auto-text">
+                  <span class="ss-icon">🟡</span>
+                  이 메시지는 소상공인 상생을 위해 발송됩니다
+                </div>
+                <!-- 하단 링크 -->
+                <div class="msg-bottom-links">
+                  <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 자동삽입 설명 -->
+        <div style="margin-top:12px;background:#FFFDE0;border:1px solid #FFE566;border-radius:8px;padding:10px 12px">
+          <div style="font-size:11px;font-weight:700;color:#A07800;margin-bottom:4px">🟡 자동 삽입 안내</div>
+          <div style="font-size:10px;color:#777;line-height:1.6">
+            상생 캠페인 메시지 선택 시 버튼과 수신거부 사이에 공익 문구가 자동 삽입됩니다. 수정·삭제 불가합니다.
+          </div>
+        </div>
+      </div><!-- /preview-area -->
+
+    </div><!-- /content-wrap -->
+
+    <!-- 하단 버튼 -->
+    <div class="form-footer">
+      <button class="btn-prev">이전</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn-save">임시저장</button>
+        <button class="btn-next">다음</button>
+      </div>
+    </div>
+  </div><!-- /main -->
+</div><!-- /layout -->
+</div><!-- /slide1 -->
+
+
+<!-- ════════════════════════════════════════
+     슬라이드 ③ — Step 2 발송 설정
+════════════════════════════════════════ -->
+<div class="slide" id="slide2">
+<div class="gnb">
+  <div class="gnb-logo"><span class="k">kakao</span><span class="b">business</span><span class="pc">파트너센터</span></div>
+  <div class="gnb-nav">
+    <div class="gnav-item">파트너</div><div class="gnav-item">광고 <span class="arr">▾</span></div>
+    <div class="gnav-item">판매 <span class="arr">▾</span></div><div class="gnav-item">비즈도구 <span class="arr">▾</span></div>
+    <div class="gnav-item">지원 <span class="arr">▾</span></div>
+  </div>
+  <div class="gnb-right">
+    <div class="noti">알림 <span class="noti-badge">N</span></div>
+    <div class="noti">공지사항 <span class="noti-badge">N</span></div>
+    <div class="noti">고객센터</div>
+    <div class="user-chip"><div class="user-av">S</div><span class="user-name">skstoa_mktg@kakao...</span></div>
+  </div>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="sb-label">홈</span></div>
+    <div class="sb-icon active"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="sb-label">메시지</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><span class="sb-label">채널</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span class="sb-label">친구</span></div>
+    <div class="sb-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="sb-label">통계</span></div>
+  </div>
+  <div class="sidebar2">
+    <div class="sb2-title">메시지</div>
+    <div class="sb2-item active">메시지 보내기</div>
+    <div class="sb2-item">내 메시지</div>
+    <div class="sb2-item">메시지 활용예시</div>
+    <div class="sb2-item">웰컴메시지</div>
+    <div class="sb2-item new-item">🟡 상생 캠페인 <span class="sb2-badge-new">NEW</span></div>
+    <div class="sb2-item">친구 그룹</div>
+    <div class="sb2-item">고객 파일</div>
+  </div>
+  <div class="main">
+    <div class="step-bar">
+      <div class="step-item">
+        <div class="step-dot done">✓</div>
+        <span class="step-text">와이드 이미지형 작성</span>
+      </div>
+      <div class="step-line done"></div>
+      <div class="step-item">
+        <div class="step-dot active">2</div>
+        <span class="step-text active">메시지 발송 설정</span>
+      </div>
+    </div>
+
+    <div class="step2-grid">
+      <div class="step2-form">
+
+        <!-- 🟡 상생 캠페인 확인 배너 -->
+        <div style="background:#FFFDE0;border:1px solid #FFE566;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">🟡</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#A07800">상생 캠페인 메시지 발송 모드</div>
+            <div style="font-size:11px;color:#777;margin-top:2px">2026 동행축제 인증 계정 · 발송 단가 10% 자동 할인 적용 · 잔여 발송 1회</div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-card-title">연령인증 메시지 ⓘ</div>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="age" checked> 선택안함</label>
+            <label class="radio-option"><input type="radio" name="age"> 선택함</label>
+          </div>
+          <div class="form-hint" style="margin-top:6px">연령인증 선택함 시 전체 채팅방에 커버가 씌워지며, 20세 이상인만 내용을 확인할 수 있습니다.</div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-card-title">메시지 타겟 설정</div>
+          <div class="radio-row">
+            <div class="radio-opt active-opt">
+              <input type="radio" name="target" checked>
+              <div><div class="radio-opt-label">타겟 설정 안함 (전체 친구 발송)</div></div>
+            </div>
+            <div class="radio-opt">
+              <input type="radio" name="target">
+              <div><div class="radio-opt-label">친구그룹 타겟팅</div></div>
+            </div>
+            <div class="radio-opt">
+              <input type="radio" name="target">
+              <div><div class="radio-opt-label">인구통계 정보 타겟팅 ⓘ</div></div>
+            </div>
+          </div>
+          <div class="target-box" style="margin-top:12px">
+            <div class="target-row"><span class="target-key">대상</span><span class="target-val">전체친구</span></div>
+            <div class="target-row" style="margin-bottom:0"><span class="target-key">총 예상 발송</span><span class="target-val highlight">3,755,628명</span></div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-card-title">발송 날짜/시간 설정</div>
+          <div style="font-size:12px;color:#555;margin-bottom:8px">발송 시작 일시</div>
+          <div class="date-row">
+            <input class="date-input" type="text" value="2026.05.20" style="width:130px">
+            <select class="date-select"><option>9시</option></select>
+            <select class="date-select"><option>00분</option></select>
+          </div>
+          <div class="form-hint" style="margin-top:8px">한국 사용자는 20:55부터 08:00까지는 메시지 수신이 불가하여 익일 오전 08:00 이후에 메시지를 받게 됩니다.</div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-card-title">총 발송 비용</div>
+          <div class="cost-box">
+            <div class="cost-row">
+              <span class="cost-label">발송 건수</span>
+              <span class="cost-val">3,755,628건</span>
+            </div>
+            <div class="cost-row">
+              <span class="cost-label">적용 단가</span>
+              <span style="font-size:12px;color:#555">
+                <span style="text-decoration:line-through;color:#aaa">15원</span>
+                → <span style="color:#C9A800;font-weight:700">13.5원</span>
+                <span style="background:#FF6B35;color:#fff;font-size:10px;padding:1px 6px;border-radius:3px;margin-left:4px">10% 할인</span>
+              </span>
+            </div>
+            <div style="border-top:1px solid #F0F0F0;margin:10px 0 8px"></div>
+            <div class="cost-row">
+              <span class="cost-label">총 발송 비용</span>
+              <span class="cost-val" style="font-size:16px">50,700,978원 <span style="font-size:12px;color:#aaa">+ VAT</span></span>
+            </div>
+            <div class="cost-row" style="margin-top:2px">
+              <span style="font-size:11px;color:#2E7D32">절감 금액</span>
+              <span style="font-size:12px;color:#2E7D32;font-weight:600">약 5,633,442원 절감</span>
+            </div>
+          </div>
+          <div class="ss-cost-note">
+            🟡 상생 캠페인 할인이 자동 적용된 금액입니다. 사업 기간(~5/31) 내 유효합니다.
+          </div>
+          <div class="cost-hint">※ 메시지 발송 등록 시 과금된 비용과 실발송 후 차액은 메시지 발송 종료 후에 돌려드립니다.</div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-card-title">발송 상세 설정</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;cursor:pointer"><input type="checkbox"> 푸시알림 보내지 않기 ⓘ</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;cursor:pointer"><input type="checkbox"> 분산 발송 설정 ⓘ</label>
+          </div>
+        </div>
+
+        <div class="form-footer" style="position:static;padding:0;border-top:none;margin-top:4px">
+          <button class="btn-prev">이전</button>
+          <div class="footer-btns">
+            <button class="btn-test">임시저장</button>
+            <button class="btn-test">테스트발송</button>
+            <button class="btn-register">등록</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측 프리뷰 -->
+      <div class="step2-preview">
+        <div style="font-size:11px;color:#aaa;margin-bottom:8px;font-weight:600;text-align:center">미리보기</div>
+        <div class="phone-wrap">
+          <div class="phone-bar"></div>
+          <div class="phone-screen">
+            <div class="chat-header">
+              <div class="chat-channel-av">SK</div>
+              <div class="chat-channel-info">
+                <div class="chat-channel-name">SK스토아</div>
+                <div class="chat-channel-sub">1566-0106</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="msg-bubble">
+                <div class="msg-ad-tag">(광고)SK스토아</div>
+                <div class="msg-img">
+                  <span style="font-size:28px">🛍️</span>
+                  <span style="font-size:10px;color:rgba(255,255,255,0.9);font-weight:700">2026 동행축제</span>
+                  <span style="font-size:9px;color:rgba(255,255,255,0.7)">소상공인 기획전</span>
+                </div>
+                <div class="msg-text">소상공인 우수상품을 특별가로!<br>오늘~5/31까지 최대 30% 할인<br>지금 동행축제 기획전에서<br>만나보세요.</div>
+                <div class="msg-btn-group">
+                  <div class="msg-btn">지금 바로 구매하기</div>
+                  <div class="msg-btn">공유하기</div>
+                </div>
+                <div class="ss-auto-text">
+                  <span class="ss-icon">🟡</span>
+                  이 메시지는 소상공인 상생을 위해 발송됩니다
+                </div>
+                <div class="msg-bottom-links">
+                  <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /slide2 -->
+
+
+<!-- ════════════════════════════════════════
+     슬라이드 ④ — 말풍선 비교 (일반 vs 상생)
+════════════════════════════════════════ -->
+<div class="slide" id="slide3">
+<div style="background:#F0F0F0;min-height:100vh;padding:40px">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:6px">말풍선 비교 — 일반 vs 상생 캠페인</div>
+    <div style="font-size:13px;color:#888;margin-bottom:32px">자동 삽입 문구 외 모든 요소(이미지·내용·버튼)는 동일하게 자유롭게 제작 가능합니다</div>
+
+    <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:start">
+
+      <!-- 일반 메시지 -->
+      <div style="background:#fff;border-radius:16px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.07)">
+        <div style="font-size:11px;font-weight:700;color:#aaa;margin-bottom:16px;letter-spacing:0.8px;text-transform:uppercase">일반 채널 메시지</div>
+        <div style="display:flex;justify-content:center;margin-bottom:20px">
+          <div class="phone-wrap" style="width:220px">
+            <div class="phone-bar"></div>
+            <div class="phone-screen">
+              <div class="chat-header">
+                <div class="chat-channel-av" style="width:26px;height:26px;font-size:11px">SK</div>
+                <div class="chat-channel-info">
+                  <div class="chat-channel-name" style="font-size:12px">SK스토아</div>
+                </div>
+              </div>
+              <div class="chat-body">
+                <div class="msg-bubble">
+                  <div class="msg-ad-tag">(광고)SK스토아</div>
+                  <div class="msg-img" style="height:100px">
+                    <span style="font-size:24px">🛍️</span>
+                    <span style="font-size:9px;color:rgba(255,255,255,0.9);font-weight:700">특별 기획전</span>
+                  </div>
+                  <div class="msg-text" style="font-size:11px">소상공인 우수상품을 특별가로!<br>오늘~5/31까지 최대 30% 할인</div>
+                  <div class="msg-btn-group">
+                    <div class="msg-btn" style="font-size:10px">지금 바로 구매하기</div>
+                    <div class="msg-btn" style="font-size:10px">공유하기</div>
+                  </div>
+                  <!-- 자동삽입 없음 -->
+                  <div class="msg-bottom-links">
+                    <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#F8F8F8;border-radius:8px;padding:14px 16px">
+          <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:10px">구성 요소</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#555">
+            <div style="display:flex;align-items:center;gap:8px">✅ <span>(광고) 표기</span></div>
+            <div style="display:flex;align-items:center;gap:8px">✅ <span>이미지 / 내용 / 버튼</span></div>
+            <div style="display:flex;align-items:center;gap:8px">✅ <span>수신거부 | 채널차단</span></div>
+            <div style="display:flex;align-items:center;gap:8px;color:#aaa">— <span>공익 문구 없음</span></div>
+          </div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid #EBEBEB;font-size:12px">
+            <span style="color:#888">발송 단가</span> <span style="color:#1A1A1A;font-weight:700;margin-left:8px">15원/건 (기준 단가)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 화살표 -->
+      <div style="display:flex;align-items:center;justify-content:center;padding-top:60px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="font-size:22px;color:#C9A800">→</div>
+          <div style="font-size:10px;color:#C9A800;font-weight:700;white-space:nowrap">상생 선택</div>
+        </div>
+      </div>
+
+      <!-- 상생 메시지 -->
+      <div style="background:#fff;border-radius:16px;padding:28px 24px;box-shadow:0 4px 20px rgba(201,168,0,0.15);border:2px solid #FFE566">
+        <div style="font-size:11px;font-weight:700;color:#C9A800;margin-bottom:16px;letter-spacing:0.8px;text-transform:uppercase;display:flex;align-items:center;gap:6px">🟡 상생 캠페인 메시지 <span style="font-size:10px;background:#FEE500;color:#1A1A1A;padding:2px 8px;border-radius:10px">NEW</span></div>
+        <div style="display:flex;justify-content:center;margin-bottom:20px">
+          <div class="phone-wrap" style="width:220px;border-color:#C9A800">
+            <div class="phone-bar"></div>
+            <div class="phone-screen">
+              <div class="chat-header">
+                <div class="chat-channel-av" style="width:26px;height:26px;font-size:11px">SK</div>
+                <div class="chat-channel-info">
+                  <div class="chat-channel-name" style="font-size:12px">SK스토아</div>
+                </div>
+              </div>
+              <div class="chat-body">
+                <div class="msg-bubble">
+                  <div class="msg-ad-tag">(광고)SK스토아</div>
+                  <div class="msg-img" style="height:100px">
+                    <span style="font-size:24px">🛍️</span>
+                    <span style="font-size:9px;color:rgba(255,255,255,0.9);font-weight:700">특별 기획전</span>
+                  </div>
+                  <div class="msg-text" style="font-size:11px">소상공인 우수상품을 특별가로!<br>오늘~5/31까지 최대 30% 할인</div>
+                  <div class="msg-btn-group">
+                    <div class="msg-btn" style="font-size:10px">지금 바로 구매하기</div>
+                    <div class="msg-btn" style="font-size:10px">공유하기</div>
+                  </div>
+                  <!-- 🟡 자동 삽입 -->
+                  <div class="ss-auto-text" style="font-size:9px">
+                    <span class="ss-icon" style="font-size:10px">🟡</span>
+                    이 메시지는 소상공인 상생을 위해 발송됩니다
+                  </div>
+                  <div class="msg-bottom-links">
+                    <span>수신거부</span> | <span>홈</span> &gt; <span>채널차단</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#FFFDE0;border-radius:8px;padding:14px 16px;border:1px solid #FFE566">
+          <div style="font-size:11px;font-weight:700;color:#A07800;margin-bottom:10px">구성 요소</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#555">
+            <div style="display:flex;align-items:center;gap:8px">✅ <span>(광고) 표기</span></div>
+            <div style="display:flex;align-items:center;gap:8px">✅ <span>이미지 / 내용 / 버튼</span></div>
+            <div style="display:flex;align-items:center;gap:8px">✅ <span>수신거부 | 채널차단</span></div>
+            <div style="display:flex;align-items:center;gap:8px;font-weight:700;color:#C9A800">🟡 <span>공익 문구 자동 삽입 <span style="font-size:10px;color:#aaa">(수정불가)</span></span></div>
+          </div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid #FFE566;font-size:12px;display:flex;align-items:center;gap:8px">
+            <span style="color:#888">발송 단가</span>
+            <span style="text-decoration:line-through;color:#aaa">15원</span>
+            <span style="color:#C9A800;font-weight:700">→ 13.5원/건</span>
+            <span style="background:#FF6B35;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px">10% ↓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 핵심 차이 요약 -->
+    <div style="background:#fff;border-radius:12px;padding:20px 24px;margin-top:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+      <div style="font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:12px">핵심 요약</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div style="text-align:center;padding:12px;background:#F8F8F8;border-radius:8px">
+          <div style="font-size:22px;margin-bottom:6px">🎨</div>
+          <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px">콘텐츠 자유도</div>
+          <div style="font-size:11px;color:#888;line-height:1.5">이미지·내용·버튼 CTA는<br>플랫폼사가 자유롭게 제작</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:#FFFDE0;border-radius:8px;border:1px solid #FFE566">
+          <div style="font-size:22px;margin-bottom:6px">🟡</div>
+          <div style="font-size:12px;font-weight:700;color:#A07800;margin-bottom:4px">자동 삽입 (고정)</div>
+          <div style="font-size:11px;color:#888;line-height:1.5">"소상공인 상생" 문구만<br>시스템이 자동 삽입</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:#F8F8F8;border-radius:8px">
+          <div style="font-size:22px;margin-bottom:6px">💰</div>
+          <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px">발송 단가 할인</div>
+          <div style="font-size:11px;color:#888;line-height:1.5">적용 단가 기준<br>10% 자동 할인</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div><!-- /slide3 -->
+
+<script>
+function showSlide(n){
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.snav-btn').forEach((b,i)=>b.classList.toggle('active',i===n));
+}
+</script>
+</body>
+</html>
