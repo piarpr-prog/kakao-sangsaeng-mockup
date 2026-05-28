@@ -241,11 +241,11 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
 <div class="slide-nav">
   <span>슬라이드 전환</span>
   <button class="snav-btn active" onclick="showSlide(0)">① 권한 신청 화면</button>
-  <button class="snav-btn" onclick="showSlide(1)">② Step 1 메시지 작성</button>
-  <button class="snav-btn" onclick="showSlide(2)">③ Step 2 발송 설정</button>
-  <button class="snav-btn" onclick="showSlide(3)">④ 말풍선 비교</button>
-  <button class="snav-btn" onclick="showSlide(4)">⑤ A안·B안·C안 적용화면</button>
-  <button class="snav-btn" onclick="showSlide(5)">⑥ 파트너사 신청 입력</button>
+  <button class="snav-btn" onclick="showSlide(1)">② 파트너사 신청 입력</button>
+  <button class="snav-btn" onclick="showSlide(2)">③ Step 1 메시지 작성</button>
+  <button class="snav-btn" onclick="showSlide(3)">④ Step 2 발송 설정</button>
+  <button class="snav-btn" onclick="showSlide(4)">⑤ 말풍선 비교</button>
+  <button class="snav-btn" onclick="showSlide(5)">⑥ A안·B안·C안 적용화면</button>
 </div>
 
 <!-- ════════════════════════════════════════
@@ -361,6 +361,200 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
 </div>
 </div><!-- /slide0 -->
 
+<!-- ════════════════════════════════════════
+     슬라이드 ⑥ — 파트너사 상생 캠페인 신청 입력
+════════════════════════════════════════ -->
+<div class="slide" id="slide5">
+<div class="gnb">
+  <div class="gnb-logo"><span class="k">kakao</span><span class="b">business</span><span class="pc">파트너센터</span></div>
+  <div class="gnb-nav">
+    <div class="gnav-item">파트너</div>
+    <div class="gnav-item">광고 <span class="arr">▾</span></div>
+    <div class="gnav-item">판매 <span class="arr">▾</span></div>
+  </div>
+  <div class="gnb-right">
+    <div class="noti">🔔 <span class="noti-badge">1</span></div>
+    <div class="user-chip"><div class="user-av">카</div><span class="user-name">카카오 채널</span></div>
+  </div>
+</div>
+<div class="layout">
+  <!-- 아이콘 사이드바 -->
+  <div class="sidebar">
+    <div class="sb-icon active">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span class="sb-label">홈</span>
+    </div>
+  </div>
+  <!-- 2차 사이드바 -->
+  <div class="sidebar2">
+    <div class="sb2-title">채널 메시지</div>
+    <div class="sb2-item">메시지 발송</div>
+    <div class="sb2-item">발송 내역</div>
+    <div class="sb2-item active new-item">상생 캠페인 신청 <span class="sb2-badge-new">NEW</span></div>
+    <div class="sb2-item">통계</div>
+    <div class="sb2-item">설정</div>
+  </div>
+  <!-- 메인 콘텐츠 -->
+  <div class="main" style="background:#F7F8FA;padding:32px 40px">
+
+    <!-- 페이지 헤더 -->
+    <div style="margin-bottom:28px">
+      <div style="font-size:11px;color:#aaa;margin-bottom:6px">채널 메시지 &gt; 상생 캠페인 신청</div>
+      <div style="font-size:22px;font-weight:800;color:#1A1A1A;margin-bottom:4px">상생 캠페인 메시지 신청</div>
+      <div style="font-size:13px;color:#777;line-height:1.6">정부지원사업 참여 파트너사가 협약서를 등록하면, 심사 후 상생 메시지 발송 기능이 활성화됩니다.<br>심사는 영업일 기준 3~5일 소요됩니다.</div>
+    </div>
+
+    <!-- 안내 배너 -->
+    <div style="background:#FFFDE0;border:1px solid #FEE500;border-radius:10px;padding:14px 18px;display:flex;align-items:flex-start;gap:10px;margin-bottom:28px">
+      <span style="font-size:18px;flex-shrink:0">📋</span>
+      <div style="font-size:12px;color:#7A6000;line-height:1.8">
+        <b>신청 전 확인하세요</b><br>
+        · 협약서는 PDF 또는 이미지(JPG·PNG) 형식, 최대 10MB<br>
+        · 사업 기간은 협약서에 명시된 기간과 일치해야 합니다<br>
+        · 승인 완료 시 메시지 발송 단가 혜택 및 말풍선 상생 표시가 자동 적용됩니다
+      </div>
+    </div>
+
+    <!-- 신청 폼 카드 -->
+    <div style="background:#fff;border-radius:12px;border:1px solid #E8E8E8;padding:32px 36px;max-width:680px">
+
+      <!-- Step 표시 -->
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:32px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="width:28px;height:28px;border-radius:50%;background:#FEE500;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#1A1A1A">1</div>
+          <span style="font-size:10px;color:#1A1A1A;font-weight:700">기본 정보</span>
+        </div>
+        <div style="flex:1;height:2px;background:#FEE500;margin:0 8px;margin-bottom:14px"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="width:28px;height:28px;border-radius:50%;background:#E8E8E8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#aaa">2</div>
+          <span style="font-size:10px;color:#aaa">서류 업로드</span>
+        </div>
+        <div style="flex:1;height:2px;background:#E8E8E8;margin:0 8px;margin-bottom:14px"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="width:28px;height:28px;border-radius:50%;background:#E8E8E8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#aaa">3</div>
+          <span style="font-size:10px;color:#aaa">제출 완료</span>
+        </div>
+      </div>
+
+      <!-- 사업명 -->
+      <div style="margin-bottom:22px">
+        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
+          사업명 <span style="color:#FF3B30">*</span>
+        </label>
+        <input type="text" placeholder="예: 2026년 소상공인 디지털 전환 지원사업"
+          style="width:100%;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
+          onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
+        <div style="font-size:11px;color:#aaa;margin-top:5px">협약서에 기재된 정식 사업명을 입력하세요</div>
+      </div>
+
+      <!-- 지원기관 -->
+      <div style="margin-bottom:22px">
+        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
+          주관기관 <span style="color:#FF3B30">*</span>
+        </label>
+        <input type="text" placeholder="예: 중소벤처기업부 / 소상공인시장진흥공단"
+          style="width:100%;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
+          onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
+      </div>
+
+      <!-- 사업 기간 -->
+      <div style="margin-bottom:22px">
+        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
+          사업 기간 <span style="color:#FF3B30">*</span>
+        </label>
+        <div style="display:flex;align-items:center;gap:10px">
+          <input type="date" value="2026-01-01"
+            style="flex:1;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
+            onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
+          <span style="color:#aaa;font-size:13px;flex-shrink:0">~</span>
+          <input type="date" value="2026-12-31"
+            style="flex:1;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
+            onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
+        </div>
+        <div style="font-size:11px;color:#aaa;margin-top:5px">협약서에 명시된 사업 수행 기간을 입력하세요</div>
+      </div>
+
+      <!-- 예상 수혜 사업자 수 -->
+      <div style="margin-bottom:28px">
+        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
+          예상 수혜 사업자 수
+        </label>
+        <div style="display:flex;align-items:center;gap:8px">
+          <input type="number" placeholder="예: 500"
+            style="width:180px;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
+            onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
+          <span style="font-size:13px;color:#555">개사</span>
+        </div>
+        <div style="font-size:11px;color:#aaa;margin-top:5px">미확정이면 비워도 됩니다</div>
+      </div>
+
+      <div style="height:1px;background:#F0F0F0;margin-bottom:28px"></div>
+
+      <!-- 협약서 업로드 -->
+      <div style="margin-bottom:28px">
+        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
+          협약서 업로드 <span style="color:#FF3B30">*</span>
+        </label>
+        <!-- 업로드 드롭존 -->
+        <div style="border:2px dashed #D0D0D0;border-radius:10px;padding:32px 20px;text-align:center;cursor:pointer;transition:border-color 0.15s;background:#FAFAFA"
+          onmouseover="this.style.borderColor='#FEE500';this.style.background='#FFFDE0'"
+          onmouseout="this.style.borderColor='#D0D0D0';this.style.background='#FAFAFA'">
+          <div style="font-size:28px;margin-bottom:8px">📎</div>
+          <div style="font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:4px">파일을 끌어다 놓거나 클릭하여 업로드</div>
+          <div style="font-size:11px;color:#aaa">PDF, JPG, PNG · 최대 10MB · 협약서 1부</div>
+          <div style="margin-top:14px">
+            <button style="padding:8px 20px;border:1px solid #1A1A1A;border-radius:6px;background:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:#1A1A1A">파일 선택</button>
+          </div>
+        </div>
+        <!-- 업로드된 파일 예시 -->
+        <div style="margin-top:10px;padding:10px 14px;background:#F5F5F5;border-radius:8px;display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">📄</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:12px;font-weight:600;color:#1A1A1A;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">협약서_2026_소상공인디지털전환.pdf</div>
+            <div style="font-size:11px;color:#aaa">2.4 MB · 업로드 완료</div>
+          </div>
+          <div style="width:16px;height:16px;border-radius:50%;background:#34C759;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:#fff;font-size:10px;font-weight:900">✓</span>
+          </div>
+          <button style="border:none;background:none;color:#aaa;cursor:pointer;font-size:16px;flex-shrink:0">✕</button>
+        </div>
+      </div>
+
+      <!-- 개인정보 동의 -->
+      <div style="margin-bottom:28px;padding:14px 16px;background:#F7F8FA;border-radius:8px;border:1px solid #E8E8E8">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+          <div style="width:18px;height:18px;border-radius:4px;background:#FEE500;border:2px solid #C9A800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">
+            <span style="color:#1A1A1A;font-size:11px;font-weight:900">✓</span>
+          </div>
+          <div style="font-size:12px;color:#555;line-height:1.7">
+            <b style="color:#1A1A1A">필수 동의</b> — 제출한 협약서 및 사업 정보는 상생 캠페인 자격 심사 목적으로만 활용되며, 심사 완료 후 파기됩니다. <span style="color:#C9A800;text-decoration:underline;cursor:pointer">개인정보 처리방침 보기</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- 버튼 -->
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button style="padding:11px 24px;border:1px solid #D0D0D0;border-radius:8px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:#555">임시저장</button>
+        <button style="padding:11px 28px;border:none;border-radius:8px;background:#FEE500;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;color:#1A1A1A"
+          onclick="document.getElementById('submit-done').style.display='flex';this.closest('.slide').querySelector('#submit-done').scrollIntoView({behavior:'smooth'})">
+          신청 제출 →
+        </button>
+      </div>
+    </div>
+
+    <!-- 제출 완료 메시지 (hidden → 버튼 클릭 시 노출) -->
+    <div id="submit-done" style="display:none;margin-top:20px;max-width:680px;background:#fff;border-radius:12px;border:1px solid #E8E8E8;padding:32px 36px;flex-direction:column;align-items:center;text-align:center;gap:12px">
+      <div style="width:52px;height:52px;border-radius:50%;background:#FEE500;display:flex;align-items:center;justify-content:center;font-size:26px">✓</div>
+      <div style="font-size:18px;font-weight:800;color:#1A1A1A">신청이 접수되었습니다</div>
+      <div style="font-size:13px;color:#777;line-height:1.8">영업일 기준 3~5일 내 검토 후 결과를 알림으로 안내드립니다.<br>승인 완료 시 <b>상생 메시지 발송 기능</b>이 자동으로 활성화됩니다.</div>
+      <div style="margin-top:6px;padding:10px 20px;background:#F7F8FA;border-radius:8px;font-size:12px;color:#555">
+        접수번호 <b style="color:#1A1A1A">SGN-2026-00142</b> · 심사 예상 완료일 <b style="color:#1A1A1A">2026.06.04</b>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div><!-- /slide5 -->
 
 <!-- ════════════════════════════════════════
      슬라이드 ② — Step 1 메시지 작성
@@ -623,7 +817,6 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
 </div><!-- /layout -->
 </div><!-- /slide1 -->
 
-
 <!-- ════════════════════════════════════════
      슬라이드 ③ — Step 2 발송 설정
 ════════════════════════════════════════ -->
@@ -818,7 +1011,6 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
   </div>
 </div>
 </div><!-- /slide2 -->
-
 
 <!-- ════════════════════════════════════════
      슬라이드 ④ — 말풍선 비교 (일반 vs 상생)
@@ -1288,201 +1480,6 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F
 </div>
 </div>
 </div><!-- /slide4 -->
-
-<!-- ════════════════════════════════════════
-     슬라이드 ⑥ — 파트너사 상생 캠페인 신청 입력
-════════════════════════════════════════ -->
-<div class="slide" id="slide5">
-<div class="gnb">
-  <div class="gnb-logo"><span class="k">kakao</span><span class="b">business</span><span class="pc">파트너센터</span></div>
-  <div class="gnb-nav">
-    <div class="gnav-item">파트너</div>
-    <div class="gnav-item">광고 <span class="arr">▾</span></div>
-    <div class="gnav-item">판매 <span class="arr">▾</span></div>
-  </div>
-  <div class="gnb-right">
-    <div class="noti">🔔 <span class="noti-badge">1</span></div>
-    <div class="user-chip"><div class="user-av">카</div><span class="user-name">카카오 채널</span></div>
-  </div>
-</div>
-<div class="layout">
-  <!-- 아이콘 사이드바 -->
-  <div class="sidebar">
-    <div class="sb-icon active">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      <span class="sb-label">홈</span>
-    </div>
-  </div>
-  <!-- 2차 사이드바 -->
-  <div class="sidebar2">
-    <div class="sb2-title">채널 메시지</div>
-    <div class="sb2-item">메시지 발송</div>
-    <div class="sb2-item">발송 내역</div>
-    <div class="sb2-item active new-item">상생 캠페인 신청 <span class="sb2-badge-new">NEW</span></div>
-    <div class="sb2-item">통계</div>
-    <div class="sb2-item">설정</div>
-  </div>
-  <!-- 메인 콘텐츠 -->
-  <div class="main" style="background:#F7F8FA;padding:32px 40px">
-
-    <!-- 페이지 헤더 -->
-    <div style="margin-bottom:28px">
-      <div style="font-size:11px;color:#aaa;margin-bottom:6px">채널 메시지 &gt; 상생 캠페인 신청</div>
-      <div style="font-size:22px;font-weight:800;color:#1A1A1A;margin-bottom:4px">상생 캠페인 메시지 신청</div>
-      <div style="font-size:13px;color:#777;line-height:1.6">정부지원사업 참여 파트너사가 협약서를 등록하면, 심사 후 상생 메시지 발송 기능이 활성화됩니다.<br>심사는 영업일 기준 3~5일 소요됩니다.</div>
-    </div>
-
-    <!-- 안내 배너 -->
-    <div style="background:#FFFDE0;border:1px solid #FEE500;border-radius:10px;padding:14px 18px;display:flex;align-items:flex-start;gap:10px;margin-bottom:28px">
-      <span style="font-size:18px;flex-shrink:0">📋</span>
-      <div style="font-size:12px;color:#7A6000;line-height:1.8">
-        <b>신청 전 확인하세요</b><br>
-        · 협약서는 PDF 또는 이미지(JPG·PNG) 형식, 최대 10MB<br>
-        · 사업 기간은 협약서에 명시된 기간과 일치해야 합니다<br>
-        · 승인 완료 시 메시지 발송 단가 혜택 및 말풍선 상생 표시가 자동 적용됩니다
-      </div>
-    </div>
-
-    <!-- 신청 폼 카드 -->
-    <div style="background:#fff;border-radius:12px;border:1px solid #E8E8E8;padding:32px 36px;max-width:680px">
-
-      <!-- Step 표시 -->
-      <div style="display:flex;align-items:center;gap:0;margin-bottom:32px">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-          <div style="width:28px;height:28px;border-radius:50%;background:#FEE500;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#1A1A1A">1</div>
-          <span style="font-size:10px;color:#1A1A1A;font-weight:700">기본 정보</span>
-        </div>
-        <div style="flex:1;height:2px;background:#FEE500;margin:0 8px;margin-bottom:14px"></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-          <div style="width:28px;height:28px;border-radius:50%;background:#E8E8E8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#aaa">2</div>
-          <span style="font-size:10px;color:#aaa">서류 업로드</span>
-        </div>
-        <div style="flex:1;height:2px;background:#E8E8E8;margin:0 8px;margin-bottom:14px"></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-          <div style="width:28px;height:28px;border-radius:50%;background:#E8E8E8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#aaa">3</div>
-          <span style="font-size:10px;color:#aaa">제출 완료</span>
-        </div>
-      </div>
-
-      <!-- 사업명 -->
-      <div style="margin-bottom:22px">
-        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
-          사업명 <span style="color:#FF3B30">*</span>
-        </label>
-        <input type="text" placeholder="예: 2026년 소상공인 디지털 전환 지원사업"
-          style="width:100%;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
-          onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
-        <div style="font-size:11px;color:#aaa;margin-top:5px">협약서에 기재된 정식 사업명을 입력하세요</div>
-      </div>
-
-      <!-- 지원기관 -->
-      <div style="margin-bottom:22px">
-        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
-          주관기관 <span style="color:#FF3B30">*</span>
-        </label>
-        <input type="text" placeholder="예: 중소벤처기업부 / 소상공인시장진흥공단"
-          style="width:100%;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
-          onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
-      </div>
-
-      <!-- 사업 기간 -->
-      <div style="margin-bottom:22px">
-        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
-          사업 기간 <span style="color:#FF3B30">*</span>
-        </label>
-        <div style="display:flex;align-items:center;gap:10px">
-          <input type="date" value="2026-01-01"
-            style="flex:1;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
-            onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
-          <span style="color:#aaa;font-size:13px;flex-shrink:0">~</span>
-          <input type="date" value="2026-12-31"
-            style="flex:1;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
-            onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
-        </div>
-        <div style="font-size:11px;color:#aaa;margin-top:5px">협약서에 명시된 사업 수행 기간을 입력하세요</div>
-      </div>
-
-      <!-- 예상 수혜 사업자 수 -->
-      <div style="margin-bottom:28px">
-        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
-          예상 수혜 사업자 수
-        </label>
-        <div style="display:flex;align-items:center;gap:8px">
-          <input type="number" placeholder="예: 500"
-            style="width:180px;padding:11px 14px;border:1px solid #D0D0D0;border-radius:8px;font-size:13px;font-family:inherit;color:#1A1A1A;outline:none"
-            onfocus="this.style.borderColor='#FEE500'" onblur="this.style.borderColor='#D0D0D0'">
-          <span style="font-size:13px;color:#555">개사</span>
-        </div>
-        <div style="font-size:11px;color:#aaa;margin-top:5px">미확정이면 비워도 됩니다</div>
-      </div>
-
-      <div style="height:1px;background:#F0F0F0;margin-bottom:28px"></div>
-
-      <!-- 협약서 업로드 -->
-      <div style="margin-bottom:28px">
-        <label style="display:block;font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:7px">
-          협약서 업로드 <span style="color:#FF3B30">*</span>
-        </label>
-        <!-- 업로드 드롭존 -->
-        <div style="border:2px dashed #D0D0D0;border-radius:10px;padding:32px 20px;text-align:center;cursor:pointer;transition:border-color 0.15s;background:#FAFAFA"
-          onmouseover="this.style.borderColor='#FEE500';this.style.background='#FFFDE0'"
-          onmouseout="this.style.borderColor='#D0D0D0';this.style.background='#FAFAFA'">
-          <div style="font-size:28px;margin-bottom:8px">📎</div>
-          <div style="font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:4px">파일을 끌어다 놓거나 클릭하여 업로드</div>
-          <div style="font-size:11px;color:#aaa">PDF, JPG, PNG · 최대 10MB · 협약서 1부</div>
-          <div style="margin-top:14px">
-            <button style="padding:8px 20px;border:1px solid #1A1A1A;border-radius:6px;background:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;color:#1A1A1A">파일 선택</button>
-          </div>
-        </div>
-        <!-- 업로드된 파일 예시 -->
-        <div style="margin-top:10px;padding:10px 14px;background:#F5F5F5;border-radius:8px;display:flex;align-items:center;gap:10px">
-          <span style="font-size:18px">📄</span>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:12px;font-weight:600;color:#1A1A1A;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">협약서_2026_소상공인디지털전환.pdf</div>
-            <div style="font-size:11px;color:#aaa">2.4 MB · 업로드 완료</div>
-          </div>
-          <div style="width:16px;height:16px;border-radius:50%;background:#34C759;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span style="color:#fff;font-size:10px;font-weight:900">✓</span>
-          </div>
-          <button style="border:none;background:none;color:#aaa;cursor:pointer;font-size:16px;flex-shrink:0">✕</button>
-        </div>
-      </div>
-
-      <!-- 개인정보 동의 -->
-      <div style="margin-bottom:28px;padding:14px 16px;background:#F7F8FA;border-radius:8px;border:1px solid #E8E8E8">
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-          <div style="width:18px;height:18px;border-radius:4px;background:#FEE500;border:2px solid #C9A800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">
-            <span style="color:#1A1A1A;font-size:11px;font-weight:900">✓</span>
-          </div>
-          <div style="font-size:12px;color:#555;line-height:1.7">
-            <b style="color:#1A1A1A">필수 동의</b> — 제출한 협약서 및 사업 정보는 상생 캠페인 자격 심사 목적으로만 활용되며, 심사 완료 후 파기됩니다. <span style="color:#C9A800;text-decoration:underline;cursor:pointer">개인정보 처리방침 보기</span>
-          </div>
-        </label>
-      </div>
-
-      <!-- 버튼 -->
-      <div style="display:flex;gap:10px;justify-content:flex-end">
-        <button style="padding:11px 24px;border:1px solid #D0D0D0;border-radius:8px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:#555">임시저장</button>
-        <button style="padding:11px 28px;border:none;border-radius:8px;background:#FEE500;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;color:#1A1A1A"
-          onclick="document.getElementById('submit-done').style.display='flex';this.closest('.slide').querySelector('#submit-done').scrollIntoView({behavior:'smooth'})">
-          신청 제출 →
-        </button>
-      </div>
-    </div>
-
-    <!-- 제출 완료 메시지 (hidden → 버튼 클릭 시 노출) -->
-    <div id="submit-done" style="display:none;margin-top:20px;max-width:680px;background:#fff;border-radius:12px;border:1px solid #E8E8E8;padding:32px 36px;flex-direction:column;align-items:center;text-align:center;gap:12px">
-      <div style="width:52px;height:52px;border-radius:50%;background:#FEE500;display:flex;align-items:center;justify-content:center;font-size:26px">✓</div>
-      <div style="font-size:18px;font-weight:800;color:#1A1A1A">신청이 접수되었습니다</div>
-      <div style="font-size:13px;color:#777;line-height:1.8">영업일 기준 3~5일 내 검토 후 결과를 알림으로 안내드립니다.<br>승인 완료 시 <b>상생 메시지 발송 기능</b>이 자동으로 활성화됩니다.</div>
-      <div style="margin-top:6px;padding:10px 20px;background:#F7F8FA;border-radius:8px;font-size:12px;color:#555">
-        접수번호 <b style="color:#1A1A1A">SGN-2026-00142</b> · 심사 예상 완료일 <b style="color:#1A1A1A">2026.06.04</b>
-      </div>
-    </div>
-
-  </div>
-</div>
-</div><!-- /slide5 -->
 
 <script>
 function showSlide(n){
