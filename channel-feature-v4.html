@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>채널기능 활성도 v4 | 카비센 vs 모먼트</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F5F6F8;color:#1A1A1A;font-size:13px}
+h1{font-size:20px;font-weight:800;padding:24px 24px 4px}
+.subtitle{font-size:12px;color:#888;padding:4px 24px 20px}
+.section{padding:0 24px 28px}
+.section-title{font-size:15px;font-weight:800;border-left:4px solid #FEE500;padding-left:11px;margin-bottom:14px}
+.card{background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px;margin-bottom:16px}
+.overflow{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th{background:#F7F8FA;font-weight:700;padding:8px 10px;border:1px solid #E0E0E0;text-align:center;white-space:nowrap}
+td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
+.feat-cell{text-align:left;min-width:130px;background:#FAFAFA;font-weight:600}
+.bar-wrap{width:70px;height:7px;background:#F0F0F0;border-radius:4px;overflow:hidden;margin-bottom:3px}
+.bar-fill{height:100%;border-radius:4px;transition:width .3s}
+.pct-line{font-size:12px;font-weight:700;color:#1A1A1A}
+.sub-line{font-size:10px;color:#999;margin-top:1px}
+.tag-action{display:inline-block;font-size:9px;padding:1px 5px;border-radius:8px;background:#FFF3CC;color:#8A6800;font-weight:700;margin-top:2px}
+.tag-setup{display:inline-block;font-size:9px;padding:1px 5px;border-radius:8px;background:#EEF4FF;color:#2255AA;font-weight:700;margin-top:2px}
+.action-row{background:#FFFDF0}
+.setup-row{background:#F8FBFF}
+.section-divider{font-size:11px;font-weight:700;color:#888;padding:8px 10px;background:#F0F0F0;border:1px solid #E0E0E0;text-align:left}
+/* 근거 카드 */
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:14px}
+.ev-card{background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:16px 18px}
+.ev-title{font-size:13px;font-weight:800;margin-bottom:8px}
+.ev-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;margin-bottom:8px}
+/* 카운팅 기준 예시 테이블 */
+.guide-table{width:100%;border-collapse:collapse;font-size:12px}
+.guide-table th{background:#1A1A1A;color:#fff;padding:8px 12px;text-align:left}
+.guide-table td{padding:8px 12px;border-bottom:1px solid #F0F0F0;vertical-align:top}
+.guide-table tr:nth-child(even){background:#FAFAFA}
+.count-yes{color:#16A34A;font-weight:700}
+.count-no{color:#DC2626;font-weight:700}
+/* 요약 박스 */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:18px}
+.summary-box{background:#fff;border-radius:8px;border:1px solid #E8E8E8;padding:14px;text-align:center}
+.summary-num{font-size:22px;font-weight:800;color:#1A1A1A}
+.summary-label{font-size:11px;color:#888;margin-top:3px}
+</style>
+</head>
+<body>
+
+<h1>채널기능 활성도 분석 v4</h1>
+<div class="subtitle">기간: 2026-02 ~ 2026-05 (4개월) | 유상채널메시지 발송채널 기준 | 직접액션 vs 설정기능 분리 집계</div>
+
+<!-- ① 요약 수치 -->
+<div class="section">
+  <div class="summary-grid">
+    <div class="summary-box">
+      <div class="summary-num">57,895</div>
+      <div class="summary-label">분석 대상 유상채널 (총합)</div>
+    </div>
+    <div class="summary-box"><div class="summary-num" style="color:#FEE500;text-shadow:0 0 0 #000;-webkit-text-stroke:0.5px #888">49,139</div><div class="summary-label">카비센 OLS</div></div>
+<div class="summary-box"><div class="summary-num" style="color:#C9A800;text-shadow:0 0 0 #000;-webkit-text-stroke:0">3,030</div><div class="summary-label">카비센 대행사</div></div>
+<div class="summary-box"><div class="summary-num" style="color:#4A90D9;text-shadow:0 0 0 #000;-webkit-text-stroke:0">1,218</div><div class="summary-label">모먼트 OLS</div></div>
+<div class="summary-box"><div class="summary-num" style="color:#2171B5;text-shadow:0 0 0 #000;-webkit-text-stroke:0">3,434</div><div class="summary-label">모먼트 대행사</div></div>
+<div class="summary-box"><div class="summary-num" style="color:#9B59B6;text-shadow:0 0 0 #000;-webkit-text-stroke:0">871</div><div class="summary-label">중복 OLS</div></div>
+<div class="summary-box"><div class="summary-num" style="color:#6C3483;text-shadow:0 0 0 #000;-webkit-text-stroke:0">203</div><div class="summary-label">중복 대행사</div></div>
+  </div>
+</div>
+
+<!-- ② 세그먼트별 기능 집계 테이블 -->
+<div class="section">
+  <div class="section-title">세그먼트별 기능 활성도</div>
+  <div class="card">
+    <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7">
+      · <span class="tag-action">직접 액션</span> — 파트너가 직접 콘텐츠를 생성/작성한 날 기준으로 집계 (사용비중 + 월평균활성일수 + 기간내 신규 비중)<br>
+      · <span class="tag-setup">설정 기능</span> — 한 번 세팅 후 지속 유지되는 기능 → 기간 내 보유율(%)만 집계, 활성일수 제외<br>
+      · <b>신규</b>: 분석 기간(2월) 이전에 없었다가 기간 중 처음 활성화된 채널 비중
+    </div>
+    <div class="overflow">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="text-align:left;min-width:130px">채널기능</th>
+          <th style="background:#FEE500;color:#1A1A1A;font-size:11px;padding:7px 10px;border:1px solid #E0E0E0;white-space:nowrap;text-align:center">카비센 OLS<br><span style="font-size:10px;font-weight:400;opacity:.85">49,139개</span></th><th style="background:#C9A800;color:#fff;font-size:11px;padding:7px 10px;border:1px solid #E0E0E0;white-space:nowrap;text-align:center">카비센 대행사<br><span style="font-size:10px;font-weight:400;opacity:.85">3,030개</span></th><th style="background:#4A90D9;color:#fff;font-size:11px;padding:7px 10px;border:1px solid #E0E0E0;white-space:nowrap;text-align:center">모먼트 OLS<br><span style="font-size:10px;font-weight:400;opacity:.85">1,218개</span></th><th style="background:#2171B5;color:#fff;font-size:11px;padding:7px 10px;border:1px solid #E0E0E0;white-space:nowrap;text-align:center">모먼트 대행사<br><span style="font-size:10px;font-weight:400;opacity:.85">3,434개</span></th><th style="background:#9B59B6;color:#fff;font-size:11px;padding:7px 10px;border:1px solid #E0E0E0;white-space:nowrap;text-align:center">중복 OLS<br><span style="font-size:10px;font-weight:400;opacity:.85">871개</span></th><th style="background:#6C3483;color:#fff;font-size:11px;padding:7px 10px;border:1px solid #E0E0E0;white-space:nowrap;text-align:center">중복 대행사<br><span style="font-size:10px;font-weight:400;opacity:.85">203개</span></th>
+        </tr>
+        <tr>
+          <th style="font-size:10px;color:#777;padding:5px 8px;border:1px solid #E0E0E0">사용비중<br>/ 월평균일수</th><th style="font-size:10px;color:#777;padding:5px 8px;border:1px solid #E0E0E0">사용비중<br>/ 월평균일수</th><th style="font-size:10px;color:#777;padding:5px 8px;border:1px solid #E0E0E0">사용비중<br>/ 월평균일수</th><th style="font-size:10px;color:#777;padding:5px 8px;border:1px solid #E0E0E0">사용비중<br>/ 월평균일수</th><th style="font-size:10px;color:#777;padding:5px 8px;border:1px solid #E0E0E0">사용비중<br>/ 월평균일수</th><th style="font-size:10px;color:#777;padding:5px 8px;border:1px solid #E0E0E0">사용비중<br>/ 월평균일수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="7" class="section-divider">📝 직접 액션 기능 (파트너가 직접 생성·작성)</td></tr>
+        <tr class="action-row"><td class="feat-cell">소식/게시글 작성<br><span class="tag-action">직접 액션</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:41%;background:#FEE500"></div></div>
+                  <div class="pct-line"><b>59.0%</b></div>
+                  <div class="sub-line">2.6일/월 · 신규 27.5%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:44%;background:#FEE500"></div></div>
+                  <div class="pct-line"><b>64.2%</b></div>
+                  <div class="sub-line">4.2일/월 · 신규 18.7%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:31%;background:#FFD700"></div></div>
+                  <div class="pct-line"><b>45.6%</b></div>
+                  <div class="sub-line">2.3일/월 · 신규 21.4%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:36%;background:#FEE500"></div></div>
+                  <div class="pct-line"><b>51.6%</b></div>
+                  <div class="sub-line">2.8일/월 · 신규 22.4%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:46%;background:#FEE500"></div></div>
+                  <div class="pct-line"><b>66.1%</b></div>
+                  <div class="sub-line">2.3일/월 · 신규 29.5%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:38%;background:#FEE500"></div></div>
+                  <div class="pct-line"><b>54.7%</b></div>
+                  <div class="sub-line">3.5일/월 · 신규 21.7%</div>
+                </td></tr><tr class="action-row"><td class="feat-cell">쿠폰 발행<br><span class="tag-action">직접 액션</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>13.1%</b></div>
+                  <div class="sub-line">1.5일/월 · 신규 9.5%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:15%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>21.6%</b></div>
+                  <div class="sub-line">1.9일/월 · 신규 12.0%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:13%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>18.8%</b></div>
+                  <div class="sub-line">1.6일/월 · 신규 13.5%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:11%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>15.9%</b></div>
+                  <div class="sub-line">1.8일/월 · 신규 9.6%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:13%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>19.3%</b></div>
+                  <div class="sub-line">1.6일/월 · 신규 14.0%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:17%;background:#FFD700"></div></div>
+                  <div class="pct-line"><b>25.6%</b></div>
+                  <div class="sub-line">1.8일/월 · 신규 13.3%</div>
+                </td></tr><tr class="action-row"><td class="feat-cell">마이스토어 소식<br><span class="tag-action">직접 액션</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:6%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>9.3%</b></div>
+                  <div class="sub-line">2.0일/월 · 신규 7.7%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>5.9%</b></div>
+                  <div class="sub-line">2.4일/월 · 신규 4.8%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>5.3%</b></div>
+                  <div class="sub-line">1.9일/월 · 신규 4.0%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:1%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>2.1%</b></div>
+                  <div class="sub-line">2.0일/월 · 신규 1.8%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>6.7%</b></div>
+                  <div class="sub-line">4.5일/월 · 신규 4.9%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>3.9%</b></div>
+                  <div class="sub-line">3.4일/월 · 신규 3.4%</div>
+                </td></tr><tr class="action-row"><td class="feat-cell">마이스토어 쿠폰<br><span class="tag-action">직접 액션</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>6.4%</b></div>
+                  <div class="sub-line">1.7일/월 · 신규 3.8%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>3.1%</b></div>
+                  <div class="sub-line">2.4일/월 · 신규 1.6%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>3.9%</b></div>
+                  <div class="sub-line">2.4일/월 · 신규 2.2%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:1%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>2.0%</b></div>
+                  <div class="sub-line">2.1일/월 · 신규 1.3%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>5.1%</b></div>
+                  <div class="sub-line">1.6일/월 · 신규 2.9%</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
+                  <div class="pct-line"><b>3.4%</b></div>
+                  <div class="sub-line">1.7일/월 · 신규 2.5%</div>
+                </td></tr>
+        <tr><td colspan="7" class="section-divider">⚙️ 설정 기능 (1회 세팅 후 지속 — 보유율만 집계)</td></tr>
+        <tr class="setup-row"><td class="feat-cell">채팅 ON<br><span class="tag-setup">설정 기능</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:58%;background:#A0C4FF"></div></div>
+                  <div class="pct-line"><b>83.3%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:39%;background:#A0C4FF"></div></div>
+                  <div class="pct-line"><b>56.7%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:44%;background:#A0C4FF"></div></div>
+                  <div class="pct-line"><b>64.1%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:38%;background:#A0C4FF"></div></div>
+                  <div class="pct-line"><b>55.1%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:51%;background:#A0C4FF"></div></div>
+                  <div class="pct-line"><b>74.1%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:43%;background:#A0C4FF"></div></div>
+                  <div class="pct-line"><b>61.6%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td></tr><tr class="setup-row"><td class="feat-cell">챗봇 설정<br><span class="tag-setup">설정 기능</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:15%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>22.6%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:11%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>16.3%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:12%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>18.4%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:7%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>10.7%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:19%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>28.2%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:13%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>18.7%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td></tr><tr class="setup-row"><td class="feat-cell">커스텀 채팅메뉴<br><span class="tag-setup">설정 기능</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:5%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>8.3%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:5%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>8.3%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>14.0%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>13.1%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:12%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>17.7%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:17%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>24.6%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td></tr><tr class="setup-row"><td class="feat-cell">톡체크아웃 연동<br><span class="tag-setup">설정 기능</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>5.0%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:8%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>12.4%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:11%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>16.6%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:6%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>9.3%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:7%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>10.2%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:12%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>17.2%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td></tr><tr class="setup-row"><td class="feat-cell">예약하기 연동<br><span class="tag-setup">설정 기능</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:6%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>8.7%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>3.2%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>4.8%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>13.4%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:7%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>11.0%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>3.0%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td></tr><tr class="setup-row"><td class="feat-cell">톡스토어 연동<br><span class="tag-setup">설정 기능</span></td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:5%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>7.7%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:14%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>20.2%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:14%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>21.0%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:16%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>23.1%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:12%;background:#E0EAFF"></div></div>
+                  <div class="pct-line"><b>18.5%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td><td>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:31%;background:#C8DCFF"></div></div>
+                  <div class="pct-line"><b>44.8%</b></div>
+                  <div class="sub-line">보유율</div>
+                </td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- ③ 카비센 vs 모먼트 비교 (근거 자료) -->
+<div class="section">
+  <div class="section-title">📊 카비센 vs 모먼트 기능 활성도 비교</div>
+  <div class="card">
+    <div style="font-size:12px;color:#555;margin-bottom:12px;line-height:1.7">
+      <b>핵심 근거</b>: 카비센에서 메시지를 보내는 채널이 모먼트 전용 채널보다
+      <span style="color:#D4A000;font-weight:700">콘텐츠 직접 생성 활동(소식 작성 +13.0%p, 채팅 ON +10.4%p)</span>에서 우위를 보임.<br>
+      모먼트 채널은 커스텀메뉴·체크아웃·톡스토어 등 <b>커머스/연동 기능 보유율이 높음</b> — 두 플랫폼의 운영 목적이 다름을 시사.
+    </div>
+    <div class="overflow">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left;min-width:120px">채널기능</th>
+          <th style="background:#FEE500;color:#1A1A1A">카비센 평균<br><span style="font-size:10px;font-weight:400">(OLS+대행사)</span></th>
+          <th style="background:#4A90D9;color:#fff">모먼트 평균<br><span style="font-size:10px;font-weight:400">(OLS+대행사)</span></th>
+          <th>카비센 우위</th>
+        </tr>
+      </thead>
+      <tbody><tr>
+          <td class="feat-cell">소식/게시글 작성<br><span class="tag-action">직접 액션</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:43%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>61.6%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:34%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>48.6%</b></div>
+          </td>
+          <td style="color:#16A34A;font-weight:700;text-align:center">+13.0%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
+        </tr><tr>
+          <td class="feat-cell">쿠폰 발행<br><span class="tag-action">직접 액션</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:12%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>17.4%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:12%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>17.4%</b></div>
+          </td>
+          <td style="color:#888;font-weight:700;text-align:center">0.0%p<br><span style="font-size:10px;font-weight:400">카비센 열위</span></td>
+        </tr><tr>
+          <td class="feat-cell">마이스토어 소식<br><span class="tag-action">직접 액션</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:5%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>7.6%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>3.7%</b></div>
+          </td>
+          <td style="color:#16A34A;font-weight:700;text-align:center">+3.9%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
+        </tr><tr>
+          <td class="feat-cell">마이스토어 쿠폰<br><span class="tag-action">직접 액션</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>4.8%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>3.0%</b></div>
+          </td>
+          <td style="color:#16A34A;font-weight:700;text-align:center">+1.8%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
+        </tr><tr>
+          <td class="feat-cell">채팅 ON<br><span class="tag-setup">설정 기능</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:49%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>70.0%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:41%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>59.6%</b></div>
+          </td>
+          <td style="color:#16A34A;font-weight:700;text-align:center">+10.4%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
+        </tr><tr>
+          <td class="feat-cell">챗봇 설정<br><span class="tag-setup">설정 기능</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:13%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>19.5%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:10%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>14.5%</b></div>
+          </td>
+          <td style="color:#16A34A;font-weight:700;text-align:center">+5.0%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
+        </tr><tr>
+          <td class="feat-cell">커스텀 채팅메뉴<br><span class="tag-setup">설정 기능</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:5%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>8.3%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>13.6%</b></div>
+          </td>
+          <td style="color:#DC2626;font-weight:700;text-align:center">-5.3%p<br><span style="font-size:10px;font-weight:400">카비센 열위</span></td>
+        </tr><tr>
+          <td class="feat-cell">톡체크아웃 연동<br><span class="tag-setup">설정 기능</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:6%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>8.7%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>13.0%</b></div>
+          </td>
+          <td style="color:#DC2626;font-weight:700;text-align:center">-4.3%p<br><span style="font-size:10px;font-weight:400">카비센 열위</span></td>
+        </tr><tr>
+          <td class="feat-cell">예약하기 연동<br><span class="tag-setup">설정 기능</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>5.9%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:6%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>9.1%</b></div>
+          </td>
+          <td style="color:#DC2626;font-weight:700;text-align:center">-3.2%p<br><span style="font-size:10px;font-weight:400">카비센 열위</span></td>
+        </tr><tr>
+          <td class="feat-cell">톡스토어 연동<br><span class="tag-setup">설정 기능</span></td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#FEE500"></div></div>
+            <div class="pct-line"><b>13.9%</b></div>
+          </td>
+          <td>
+            <div class="bar-wrap"><div class="bar-fill" style="width:15%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>22.1%</b></div>
+          </td>
+          <td style="color:#DC2626;font-weight:700;text-align:center">-8.2%p<br><span style="font-size:10px;font-weight:400">카비센 열위</span></td>
+        </tr></tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- 근거 카드 3종 -->
+  <div class="evidence-grid">
+    <div class="ev-card">
+      <div class="ev-badge" style="background:#FFF3CC;color:#8A6800">직접 액션 기능 우위</div>
+      <div class="ev-title">카비센 채널: 콘텐츠 직접 관리</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        소식/게시글 작성 <b>+13.0%p</b>, 채팅 ON <b>+10.4%p</b>, 마이스토어 소식 <b>+3.9%p</b>.<br>
+        카비센(비즈파트너센터)은 파트너가 직접 로그인해 운영하는 플랫폼 → 채널 관리 전반에 더 적극적으로 개입.
+      </div>
+    </div>
+    <div class="ev-card">
+      <div class="ev-badge" style="background:#EEF4FF;color:#2255AA">설정 기능 차이</div>
+      <div class="ev-title">모먼트 채널: 커머스 연동 중심</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        톡스토어 보유율 모먼트 22.1% vs 카비센 13.9% (<b>-8.2%p</b>).<br>
+        톡체크아웃 13.0% vs 8.7% (<b>-4.3%p</b>). 모먼트 광고주는 구매 전환 목적의 커머스 기능 연동 비중이 높음.
+      </div>
+    </div>
+    <div class="ev-card">
+      <div class="ev-badge" style="background:#F0FDF4;color:#166534">중복사용 채널</div>
+      <div class="ev-title">가장 정교한 운영 집단</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        중복 OLS: 소식 66.1%, 채팅 ON 74.1%, 챗봇 28.2% — 직접액션 기능과 설정 기능 모두 최상위.<br>
+        카비센+모먼트 동시 운영 채널 = 가장 높은 채널 활용도.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 카운팅 기준 예시 -->
+<div class="section">
+  <div class="section-title">📋 기능별 카운팅 기준 및 예시</div>
+  <div class="card">
+    <div style="font-size:12px;color:#888;margin-bottom:12px;line-height:1.7">
+      데이터 소스: <code>tableau_bizplatform_activeness_daily</code> (일별 스냅샷).<br>
+      ⚠️ <b>데이터 한계</b>: 소식/쿠폰은 일별 스냅샷(flag=1이면 해당 날 존재) 기준이므로, 분석 기간 이전에 작성된 콘텐츠가 기간 중 계속 1로 표시될 수 있음.
+      이를 보완하기 위해 <b>기간 전(2026년 1월) 대비 신규 활성 비중</b>을 별도 집계.
+    </div>
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th style="min-width:120px">기능</th>
+          <th style="min-width:80px">분류</th>
+          <th style="min-width:200px">✅ 카운팅 O (이럴 때 집계함)</th>
+          <th style="min-width:200px">❌ 카운팅 X (이럴 때 집계 안 함)</th>
+          <th>데이터 한계</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>소식/게시글 작성</b></td>
+          <td><span class="tag-action">직접 액션</span></td>
+          <td class="count-yes">2~5월 중 소식 게시글이 등록되어 channel_post=1인 날 (예: 3월 이벤트 소식 작성)</td>
+          <td class="count-no">설정기능으로 분류하지 않으므로 제외 항목 없음</td>
+          <td style="color:#888;font-size:11px">2026년 이전 작성 글도 1로 표시됨 → 신규 비중으로 보완</td>
+        </tr>
+        <tr>
+          <td><b>쿠폰 발행</b></td>
+          <td><span class="tag-action">직접 액션</span></td>
+          <td class="count-yes">2~5월 중 쿠폰이 채널에 존재하여 channel_coupon=1인 날 (예: 4월 할인 쿠폰 발행)</td>
+          <td class="count-no">-</td>
+          <td style="color:#888;font-size:11px">기간 전 발행 쿠폰이 유효기간 중이면 1로 지속 표시</td>
+        </tr>
+        <tr>
+          <td><b>마이스토어 소식</b></td>
+          <td><span class="tag-action">직접 액션</span></td>
+          <td class="count-yes">2~5월 중 마이스토어에 소식을 등록하여 mystore_is_news=1인 날</td>
+          <td class="count-no">-</td>
+          <td style="color:#888;font-size:11px">동일한 스냅샷 한계 적용</td>
+        </tr>
+        <tr>
+          <td><b>마이스토어 쿠폰</b></td>
+          <td><span class="tag-action">직접 액션</span></td>
+          <td class="count-yes">2~5월 중 마이스토어 쿠폰이 활성화되어 mystore_is_coupon=1인 날</td>
+          <td class="count-no">-</td>
+          <td style="color:#888;font-size:11px">동일한 스냅샷 한계 적용</td>
+        </tr>
+        <tr style="background:#F8FBFF">
+          <td><b>채팅 ON</b></td>
+          <td><span class="tag-setup">설정 기능</span></td>
+          <td colspan="2" style="color:#888">보유율만 집계 (기간 내 is_chat_on=1인 날이 하루라도 있으면 보유)</td>
+          <td class="count-no" style="font-size:11px">1년 전에 채팅 ON 설정 후 그대로 유지 중인 채널도 보유율에 포함됨 → 활성일수 미산출</td>
+        </tr>
+        <tr style="background:#F8FBFF">
+          <td><b>챗봇 설정</b></td>
+          <td><span class="tag-setup">설정 기능</span></td>
+          <td colspan="2" style="color:#888">보유율만 집계</td>
+          <td class="count-no" style="font-size:11px">시나리오 세팅 후 자동 응답 → 파트너 액션 없이도 지속 활성</td>
+        </tr>
+        <tr style="background:#F8FBFF">
+          <td><b>커스텀 채팅메뉴</b></td>
+          <td><span class="tag-setup">설정 기능</span></td>
+          <td colspan="2" style="color:#888">보유율만 집계</td>
+          <td class="count-no" style="font-size:11px">메뉴 구성 후 별도 수정 없이 지속 표시</td>
+        </tr>
+        <tr style="background:#F8FBFF">
+          <td><b>톡체크아웃 연동</b></td>
+          <td><span class="tag-setup">설정 기능</span></td>
+          <td colspan="2" style="color:#888">보유율만 집계</td>
+          <td class="count-no" style="font-size:11px">최초 연동 후 별도 해제 없이 지속 유지</td>
+        </tr>
+        <tr style="background:#F8FBFF">
+          <td><b>예약하기 연동</b></td>
+          <td><span class="tag-setup">설정 기능</span></td>
+          <td colspan="2" style="color:#888">보유율만 집계</td>
+          <td class="count-no" style="font-size:11px">최초 연동 후 별도 해제 없이 지속 유지</td>
+        </tr>
+        <tr style="background:#F8FBFF">
+          <td><b>톡스토어 연동</b></td>
+          <td><span class="tag-setup">설정 기능</span></td>
+          <td colspan="2" style="color:#888">보유율만 집계</td>
+          <td class="count-no" style="font-size:11px">톡스토어 개설 후 별도 폐점 없이 지속 유지</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
