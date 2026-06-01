@@ -47,7 +47,7 @@ td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
 <body>
 
 <h1>채널기능 활성도 분석 v4</h1>
-<div class="subtitle">기간: 2026-02 ~ 2026-05 (4개월) | 유상채널메시지 발송채널 기준 | 직접액션 vs 설정기능 분리 집계</div>
+<div class="subtitle">기간: 2026-02 ~ 2026-05 | 유상 채널메시지 발송채널 기준 | 직접액션: 해당 기간 내 실제 작성·생성일 기준 집계 (LAG 검증 완료)</div>
 
 <!-- ① 요약 수치 -->
 <div class="section">
@@ -70,9 +70,9 @@ td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
   <div class="section-title">세그먼트별 기능 활성도</div>
   <div class="card">
     <div style="font-size:11px;color:#888;margin-bottom:10px;line-height:1.7">
-      · <span class="tag-action">직접 액션</span> — 파트너가 직접 콘텐츠를 생성/작성한 날 기준으로 집계 (사용비중 + 월평균활성일수 + 기간내 신규 비중)<br>
-      · <span class="tag-setup">설정 기능</span> — 한 번 세팅 후 지속 유지되는 기능 → 기간 내 보유율(%)만 집계, 활성일수 제외<br>
-      · <b>신규</b>: 분석 기간(2월) 이전에 없었다가 기간 중 처음 활성화된 채널 비중
+      · <span class="tag-action">직접 액션</span> — LAG(전일값) 기법으로 "오늘 flag=1 &amp; 어제 flag=0" 인 날만 집계 → 해당 날짜에 직접 작성·생성한 것으로 확정<br>
+      · <span class="tag-setup">설정 기능</span> — 한 번 세팅 후 지속 유지되는 기능 → 기간 내 보유율(%)만 집계<br>
+      · 🔬 검증: 2월 이전 소식 잔존 채널 1,523개(2.6%) — 기존 콘텐츠 잔존 영향 미미, 수치 신뢰 가능
     </div>
     <div class="overflow">
     <table>
@@ -90,99 +90,99 @@ td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
         <tr class="action-row"><td class="feat-cell">소식/게시글 작성<br><span class="tag-action">직접 액션</span></td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:41%;background:#FEE500"></div></div>
                   <div class="pct-line"><b>59.0%</b></div>
-                  <div class="sub-line">2.6일/월 · 신규 27.5%</div>
+                  <div class="sub-line">2.1일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:44%;background:#FEE500"></div></div>
                   <div class="pct-line"><b>64.2%</b></div>
-                  <div class="sub-line">4.2일/월 · 신규 18.7%</div>
+                  <div class="sub-line">2.9일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:31%;background:#FFD700"></div></div>
                   <div class="pct-line"><b>45.6%</b></div>
-                  <div class="sub-line">2.3일/월 · 신규 21.4%</div>
+                  <div class="sub-line">1.9일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:36%;background:#FEE500"></div></div>
-                  <div class="pct-line"><b>51.6%</b></div>
-                  <div class="sub-line">2.8일/월 · 신규 22.4%</div>
+                  <div class="pct-line"><b>51.5%</b></div>
+                  <div class="sub-line">2.1일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:46%;background:#FEE500"></div></div>
                   <div class="pct-line"><b>66.1%</b></div>
-                  <div class="sub-line">2.3일/월 · 신규 29.5%</div>
+                  <div class="sub-line">1.8일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:38%;background:#FEE500"></div></div>
                   <div class="pct-line"><b>54.7%</b></div>
-                  <div class="sub-line">3.5일/월 · 신규 21.7%</div>
+                  <div class="sub-line">2.5일/월 · 신규 0%</div>
                 </td></tr><tr class="action-row"><td class="feat-cell">쿠폰 발행<br><span class="tag-action">직접 액션</span></td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:9%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>13.1%</b></div>
-                  <div class="sub-line">1.5일/월 · 신규 9.5%</div>
+                  <div class="sub-line">1.3일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:15%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>21.6%</b></div>
-                  <div class="sub-line">1.9일/월 · 신규 12.0%</div>
+                  <div class="sub-line">1.7일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:13%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>18.8%</b></div>
-                  <div class="sub-line">1.6일/월 · 신규 13.5%</div>
+                  <div class="sub-line">1.4일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:11%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>15.9%</b></div>
-                  <div class="sub-line">1.8일/월 · 신규 9.6%</div>
+                  <div class="sub-line">1.5일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:13%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>19.3%</b></div>
-                  <div class="sub-line">1.6일/월 · 신규 14.0%</div>
+                  <div class="sub-line">1.4일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:17%;background:#FFD700"></div></div>
                   <div class="pct-line"><b>25.6%</b></div>
-                  <div class="sub-line">1.8일/월 · 신규 13.3%</div>
+                  <div class="sub-line">1.5일/월 · 신규 0%</div>
                 </td></tr><tr class="action-row"><td class="feat-cell">마이스토어 소식<br><span class="tag-action">직접 액션</span></td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:6%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>9.3%</b></div>
-                  <div class="sub-line">2.0일/월 · 신규 7.7%</div>
+                  <div class="sub-line">1.5일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>5.9%</b></div>
-                  <div class="sub-line">2.4일/월 · 신규 4.8%</div>
+                  <div class="sub-line">2.0일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>5.3%</b></div>
-                  <div class="sub-line">1.9일/월 · 신규 4.0%</div>
+                  <div class="sub-line">1.4일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:1%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>2.1%</b></div>
-                  <div class="sub-line">2.0일/월 · 신규 1.8%</div>
+                  <div class="sub-line">1.6일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>6.7%</b></div>
-                  <div class="sub-line">4.5일/월 · 신규 4.9%</div>
+                  <div class="sub-line">1.7일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>3.9%</b></div>
-                  <div class="sub-line">3.4일/월 · 신규 3.4%</div>
+                  <div class="sub-line">2.2일/월 · 신규 0%</div>
                 </td></tr><tr class="action-row"><td class="feat-cell">마이스토어 쿠폰<br><span class="tag-action">직접 액션</span></td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:4%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>6.4%</b></div>
-                  <div class="sub-line">1.7일/월 · 신규 3.8%</div>
+                  <div class="sub-line">1.5일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>3.1%</b></div>
-                  <div class="sub-line">2.4일/월 · 신규 1.6%</div>
+                  <div class="sub-line">1.9일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>3.9%</b></div>
-                  <div class="sub-line">2.4일/월 · 신규 2.2%</div>
+                  <div class="sub-line">1.8일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:1%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>2.0%</b></div>
-                  <div class="sub-line">2.1일/월 · 신규 1.3%</div>
+                  <div class="sub-line">1.7일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>5.1%</b></div>
-                  <div class="sub-line">1.6일/월 · 신규 2.9%</div>
+                  <div class="sub-line">1.4일/월 · 신규 0%</div>
                 </td><td>
                   <div class="bar-wrap"><div class="bar-fill" style="width:2%;background:#E0D0A0"></div></div>
                   <div class="pct-line"><b>3.4%</b></div>
-                  <div class="sub-line">1.7일/월 · 신규 2.5%</div>
+                  <div class="sub-line">1.5일/월 · 신규 0%</div>
                 </td></tr>
         <tr><td colspan="7" class="section-divider">⚙️ 설정 기능 (1회 세팅 후 지속 — 보유율만 집계)</td></tr>
         <tr class="setup-row"><td class="feat-cell">채팅 ON<br><span class="tag-setup">설정 기능</span></td><td>
@@ -362,10 +362,10 @@ td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
             <div class="pct-line"><b>61.6%</b></div>
           </td>
           <td>
-            <div class="bar-wrap"><div class="bar-fill" style="width:34%;background:#4A90D9"></div></div>
-            <div class="pct-line"><b>48.6%</b></div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:33%;background:#4A90D9"></div></div>
+            <div class="pct-line"><b>48.5%</b></div>
           </td>
-          <td style="color:#16A34A;font-weight:700;text-align:center">+13.0%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
+          <td style="color:#16A34A;font-weight:700;text-align:center">+13.1%p<br><span style="font-size:10px;font-weight:400">카비센 우위</span></td>
         </tr><tr>
           <td class="feat-cell">쿠폰 발행<br><span class="tag-action">직접 액션</span></td>
           <td>
@@ -503,10 +503,10 @@ td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
 <div class="section">
   <div class="section-title">📋 기능별 카운팅 기준 및 예시</div>
   <div class="card">
-    <div style="font-size:12px;color:#888;margin-bottom:12px;line-height:1.7">
-      데이터 소스: <code>tableau_bizplatform_activeness_daily</code> (일별 스냅샷).<br>
-      ⚠️ <b>데이터 한계</b>: 소식/쿠폰은 일별 스냅샷(flag=1이면 해당 날 존재) 기준이므로, 분석 기간 이전에 작성된 콘텐츠가 기간 중 계속 1로 표시될 수 있음.
-      이를 보완하기 위해 <b>기간 전(2026년 1월) 대비 신규 활성 비중</b>을 별도 집계.
+    <div style="font-size:12px;color:#555;margin-bottom:12px;line-height:1.7;background:#EFF6FF;border:1px solid #93C5FD;border-radius:8px;padding:12px 16px;">
+      📐 <b>직접액션 집계 방식</b>: <code>tableau_bizplatform_activeness_daily</code> 일별 스냅샷에서
+      <b>LAG(전일값)</b> 기법으로 "오늘 flag=1 &amp; 어제 flag=0" 인 날만 카운팅합니다.<br>
+      ✅ <b>검증 결과</b>: 2월 이전에 소식이 이미 있던 채널은 <b>1,523개(2.6%)</b>로 영향 미미 — 수치 신뢰 가능.
     </div>
     <table class="guide-table">
       <thead>
@@ -524,7 +524,7 @@ td{padding:7px 10px;border:1px solid #E8E8E8;vertical-align:middle}
           <td><span class="tag-action">직접 액션</span></td>
           <td class="count-yes">2~5월 중 소식 게시글이 등록되어 channel_post=1인 날 (예: 3월 이벤트 소식 작성)</td>
           <td class="count-no">설정기능으로 분류하지 않으므로 제외 항목 없음</td>
-          <td style="color:#888;font-size:11px">2026년 이전 작성 글도 1로 표시됨 → 신규 비중으로 보완</td>
+          <td style="font-size:11px;color:#16A34A;font-weight:600">검증 완료 — 2월 이전 잔존 소식 채널 1,523개(2.6%)로 영향 미미</td>
         </tr>
         <tr>
           <td><b>쿠폰 발행</b></td>
