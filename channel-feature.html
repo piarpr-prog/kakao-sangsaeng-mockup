@@ -368,5 +368,105 @@ function reRenderAgg() {
 renderAgg();
 renderNonPaid();
 </script>
+
+<!-- ── 인사이트 섹션 ─────────────────────────────────────── -->
+<div style="padding:0 24px 32px">
+
+  <!-- 섹션 타이틀 -->
+  <div style="font-size:16px;font-weight:800;color:#1A1A1A;margin-bottom:6px;border-left:4px solid #FEE500;padding-left:12px">
+    📌 데이터 인사이트
+  </div>
+  <div style="font-size:12px;color:#999;margin-bottom:18px;padding-left:16px">
+    기간: 2025-06 ~ 2026-05 (유상채널 식별) / 활성일수: 2026-02~04 기준
+  </div>
+
+  <!-- 분류 기준 안내 카드 -->
+  <div style="background:#FFFDE0;border:1px solid #FFE566;border-radius:10px;padding:16px 20px;margin-bottom:16px">
+    <div style="font-size:13px;font-weight:800;color:#7A6800;margin-bottom:10px">🔖 세그먼트 분류 기준</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;font-size:12px;color:#555">
+      <div style="background:#fff;border-radius:8px;padding:10px 14px;border:1px solid #F0E090">
+        <span style="font-weight:700;color:#C9A800">카비센 OLS</span><br>
+        비즈파트너센터(BIZPARTNER)에서 직접 발송<br>
+        <span style="color:#aaa">agency_id = NULL 또는 0</span>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:10px 14px;border:1px solid #F0E090">
+        <span style="font-weight:700;color:#8B7000">카비센 대행사</span><br>
+        비즈파트너센터 채널이지만 대행사가 운용<br>
+        <span style="color:#aaa">agency_id &gt; 0</span>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:10px 14px;border:1px solid #B8D8F8">
+        <span style="font-weight:700;color:#2171B5">모먼트 OLS</span><br>
+        카카오모먼트(KAKAOMOMENT)에서 직접 발송<br>
+        <span style="color:#aaa">agency_id = NULL 또는 0</span>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:10px 14px;border:1px solid #B8D8F8">
+        <span style="font-weight:700;color:#1A5A8A">모먼트 대행사</span><br>
+        모먼트 채널이지만 대행사가 운용<br>
+        <span style="color:#aaa">agency_id &gt; 0</span>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:10px 14px;border:1px solid #D8B8F8">
+        <span style="font-weight:700;color:#6B39A8">중복사용</span><br>
+        카비센 + 모먼트 동시 사용<br>
+        <span style="color:#aaa">두 플랫폼 모두 msgcnt &gt; 0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 인사이트 카드 그리드 -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+
+    <div style="background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px 20px">
+      <div style="font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px">① 채팅 ON — OLS vs 대행사 격차</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        카비센 OLS 채널의 채팅 ON 비중이 대행사보다 압도적으로 높습니다. 직접 운영 사업자는 고객 응대를 직접 하려는 경향이 강하고, 대행사는 <b>메시지 발송 자체가 목적</b>이라 채팅 채널을 굳이 열지 않습니다.<br>
+        <span style="color:#aaa;font-size:11px">→ 업종 필터에서 소매/음식업 등 B2C 업종을 선택하면 격차가 더 벌어집니다.</span>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px 20px">
+      <div style="font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px">② 쿠폰·톡스토어 — 대행사 채널의 특기</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        대행사 채널(카비센·모먼트 공통)에서 쿠폰 발행·톡스토어 활용 비중이 OLS 대비 높게 나타납니다. 대행사가 <b>프로모션 캠페인을 기획·실행</b>하기 때문입니다.<br>
+        <span style="color:#aaa;font-size:11px">→ 패션/뷰티/식품 업종에서 이 패턴이 두드러집니다.</span>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px 20px">
+      <div style="font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px">③ 중복사용 채널 — 가장 정교한 운영자</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        카비센+모먼트를 동시 사용하는 채널은 거의 모든 기능에서 사용비중 최상위입니다. 광고 투자와 채널 운영 역량이 모두 높은 집단으로, <b>이 채널의 업종 분포</b>가 카카오 비즈 핵심 헤비유저 업종을 알려줍니다.
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px 20px">
+      <div style="font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px">④ 톡체크아웃 — 낮은 진입, 높은 유지율</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        전체 사용비중은 5~13%로 낮지만, 사용 채널의 월평균 활성일수는 안정적으로 높습니다. <b>한 번 연동하면 이탈이 거의 없는 구조</b>이므로, 핵심 과제는 진입 장벽 낮추기입니다.<br>
+        <span style="color:#aaa;font-size:11px">→ 쇼핑/유통 업종 필터 선택 시 사용비중이 전체 평균보다 높게 나옵니다.</span>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px 20px">
+      <div style="font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px">⑤ 비유상채널 — 첫 메시지가 핵심 레버</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        유상 메시지를 한 번도 보내지 않은 채널은 모든 기능에서 유상채널 평균 대비 저조합니다. 유상 발송 여부 자체가 채널 운영 성숙도의 대리 지표로, <b>첫 메시지 발송 유도</b>가 전체 채널 활성화의 핵심입니다.
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:10px;border:1px solid #E8E8E8;padding:18px 20px">
+      <div style="font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px">⑥ 업종별 기능 활용 패턴 (필터로 확인)</div>
+      <div style="font-size:12px;color:#555;line-height:1.7">
+        <b>음식/배달</b>: 예약하기·채팅 ON ↑, 톡스토어 ↓<br>
+        <b>패션/뷰티</b>: 쿠폰·마이스토어 소식 ↑<br>
+        <b>교육/학원</b>: 챗봇 설정 ↑ (반복 문의 자동화)<br>
+        <b>금융/보험</b>: 커스텀 채팅메뉴 ↑ (메뉴형 상담 안내)<br>
+        <span style="color:#aaa;font-size:11px">→ 위 업종 필터를 직접 선택해 검증해보세요.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ── /인사이트 섹션 ──────────────────────────────────────── -->
+
 </body>
 </html>
